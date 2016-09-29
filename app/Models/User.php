@@ -38,4 +38,8 @@ class User extends Authenticatable {
         "password", "remember_token",
     ];
 
+    public function budgets() {
+        return $this->hasMany(Budget::class);
+    }
+
 }

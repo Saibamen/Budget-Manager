@@ -10,4 +10,12 @@ class Source extends Model {
         "name", "type_id", "value", "comment"
     ];
 
+    public function type() {
+        return $this->belongsTo(Type::class);
+    }
+
+    public function budgets() {
+        return $this->hasMany(Budget::class);
+    }
+
 }
