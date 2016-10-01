@@ -15,7 +15,7 @@ class CreateBudgetsTable extends Migration {
             $table->decimal("value", 12, 2);
             $table->date("date");
             $table->unsignedInteger("user_id");
-            $table->mediumText("comment");
+            $table->mediumText("comment")->nullable();
             $table->timestamps();
         });
     }

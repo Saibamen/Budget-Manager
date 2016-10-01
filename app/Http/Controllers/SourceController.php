@@ -2,41 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Budget;
+use App\Models\Source;
 use Illuminate\Http\Request;
 
-class BudgetController extends Controller {
+class SourceController extends Controller {
 
     public function index() {
-        $dataset = Budget::select("id", "name", "source_id", "type_id", "value", "date", "user_id", "comment")
-            ->with(["source" => function($query) {
-                $query->select("id", "name");
-            }, "type" => function($query) {
+        $dataset = Source::select("id", "name", "type_id", "value", "comment", "created_at")
+            ->with(["type" => function($query) {
                 $query->select("id", "name");
             }])
-            ->orderBy("date", "DESC")
+            ->orderBy("name")
             ->paginate(20);
 
-        /*if($dataset->count() === 0) {
-            return Controller::returnBack([
-                "message" => trans("general.games_not_found"),
-                "alert-class" => "alert-danger"
-            ]);
-        }*/
-
-        $title = "Twój budżet";
+        $title = "Źródła";
 
         $columns = [
         [
             "title" => "Nazwa",
             "value" => function($data) {
                 return $data->name;
-            }
-        ],
-        [
-            "title" => "Źródło",
-            "value" => function($data) {
-                return $data->source->name;
             }
         ],
         [
@@ -58,7 +43,7 @@ class BudgetController extends Controller {
         [
             "title" => "Data",
             "value" => function($data) {
-                return date("j.m.Y", strtotime($data->date));
+                return date("j.m.Y", strtotime($data->created_at));
             }
         ],
         [

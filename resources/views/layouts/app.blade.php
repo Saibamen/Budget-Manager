@@ -10,6 +10,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
@@ -42,7 +45,11 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    &nbsp;
+                    <li><a href="{{ route("budget.index") }}"><strong>Budżet</strong></a></li>
+                    <li><a href="#">|</a></li>
+                    <li><a href="{{ route("source.index") }}">Źródła</a></li>
+                    <!-- <li><a href="#">|</a></li>
+                    <li><a href="">Statystyki</a></li> -->
                 </ul>
 
                 <!-- Right Side Of Navbar -->

@@ -11,4 +11,13 @@ class Controller extends BaseController {
 
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    protected function returnBack($data) {
+    	// Zapobiegaj infinite loop
+        if(back()->getTargetUrl() === url()->current()) {
+            return redirect(route("budget.index"))->with($data);
+        }
+
+        return back()->with($data);
+    }
+
 }

@@ -12,7 +12,7 @@ class CreateSourcesTable extends Migration {
             $table->string("name");
             $table->unsignedInteger("type_id")->nullable();
             $table->decimal("value", 12, 2)->nullable();
-            $table->mediumText("comment");
+            $table->mediumText("comment")->nullable();
             $table->timestamps();
         });
     }
