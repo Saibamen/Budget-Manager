@@ -43,7 +43,7 @@ class BudgetController extends Controller {
             "title" => "Typ",
             "value" => function($data) {
                 if($data->type_id) {
-                    return $data->type->name;
+                    return trans("general." . $data->type->name);
                 }
 
                 return NULL;

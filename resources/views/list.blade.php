@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Welcome</div>
+                <div class="panel-heading">@if(isset($title)) {{ $title }} @endif</div>
 
                 <div class="panel-body">
                     @if(!is_null($dataset))

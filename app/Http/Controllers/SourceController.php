@@ -28,7 +28,7 @@ class SourceController extends Controller {
             "title" => "Typ",
             "value" => function($data) {
                 if($data->type_id) {
-                    return $data->type->name;
+                    return trans("general." . $data->type->name);
                 }
 
                 return NULL;
@@ -41,7 +41,7 @@ class SourceController extends Controller {
             }
         ],
         [
-            "title" => "Data",
+            "title" => "Data dodania",
             "value" => function($data) {
                 return date("j.m.Y", strtotime($data->created_at));
             }
