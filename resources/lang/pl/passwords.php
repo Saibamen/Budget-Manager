@@ -19,4 +19,7 @@ return [
     "token"    => "Token resetowania hasła jest nieprawidłowy.",
     "user"     => "Nie znaleziono użytkownika z takim adresem e-mail.",
 
+    "send" => "Wyślij link na email",
+    "reset_password" => "Zresetuj hasło",
+
 ];

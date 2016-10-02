@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends("layouts.app")
 
-@section('content')
+@inject("Type", "App\Models\Type")
+
+@section("content")
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -15,13 +17,22 @@
 
                         <table class="table table-striped table-hover table-responsive">
                             <thead>
-                                @foreach($columns as $column)
-                                    <th>{{ $column["title"] }}</th>
-                                @endforeach
+                                <tr class="active">
+                                    @foreach($columns as $column)
+                                        <th>{{ $column["title"] }}</th>
+                                    @endforeach
+                                </tr>
                             </thead>
                             <tbody>
                                 @foreach($dataset as $data)
-                                    <tr>
+                                    @php
+                                        if(isset($data->type_id)) {
+                                            $data->type_id === $Type::INCOME ? $color_class = "success" : $color_class = NULL;
+                                            $data->type_id === $Type::EXPENDITURE ? $color_class = "danger" : NULL;
+                                        }
+                                    @endphp
+
+                                    <tr class="{{ $color_class or NULL }}">
                                         @foreach($columns as $column)
                                             <td>{!! $column["value"]($data) !!}</td>
                                         @endforeach

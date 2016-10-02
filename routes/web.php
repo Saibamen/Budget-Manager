@@ -11,16 +11,13 @@
 |
 */
 
-Route::get("/", function () {
-    return view("welcome");
-});
-
 Auth::routes();
 
-Route::get("home", "HomeController@index");
+Route::group(["middleware" => "auth"], function () {
+	Route::get("/", ["as" => "budget.index", "uses" => "BudgetController@index"]);
 
-Route::get("/", ["as" => "budget.index", "uses" => "BudgetController@index"]);
+	Route::get("source", ["as" => "source.index", "uses" => "SourceController@index"]);
+	Route::get("source/add", ["as" => "source.save", "uses" => "SourceController@save"]);
 
-Route::get("/source", ["as" => "source.index", "uses" => "SourceController@index"]);
-
-//Route::get("/stats", ["as" => "stats.index", "uses" => "StatController@index"]);
+	//Route::get("/stats", ["as" => "stats.index", "uses" => "StatController@index"]);
+});

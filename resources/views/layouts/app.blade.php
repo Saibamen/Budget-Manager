@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@if(isset($title)){{ $title }} |@endif Budget Manager - Zarządzaj swoim budżetem</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -19,7 +19,7 @@
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
+            "csrfToken" => csrf_token(),
         ]); ?>
     </script>
 </head>
@@ -37,27 +37,29 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand" href="{{ url("/") }}">
+                    Budget Manager
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ route("budget.index") }}"><strong>Budżet</strong></a></li>
-                    <li><a href="#">|</a></li>
-                    <li><a href="{{ route("source.index") }}">Źródła</a></li>
-                    <!-- <li><a href="#">|</a></li>
-                    <li><a href="">Statystyki</a></li> -->
-                </ul>
+                @if(Auth::check())
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ route("budget.index") }}"><strong>Budżet</strong></a></li>
+                        <li><a href="#">|</a></li>
+                        <li><a href="{{ route("source.index") }}">Źródła</a></li>
+                        <!-- <li><a href="#">|</a></li>
+                        <li><a href="">Statystyki</a></li> -->
+                    </ul>
+                @endif
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+                    @if(Auth::guest())
+                        <li><a href="{{ url("/login") }}">@lang("auth.login")</a></li>
+                        <li><a href="{{ url("/register") }}">@lang("auth.register")</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -66,13 +68,13 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="{{ url('/logout') }}"
+                                    <a href="{{ url("/logout") }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                        Logout
+                                        @lang("auth.logout")
                                     </a>
 
-                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ url("/logout") }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
                                 </li>
@@ -84,7 +86,7 @@
         </div>
     </nav>
 
-    @yield('content')
+    @yield("content")
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
