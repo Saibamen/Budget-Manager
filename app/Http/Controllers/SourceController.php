@@ -22,7 +22,7 @@ class SourceController extends Controller {
 
         $title = trans("general.sources");
 
-        return view("list", ["dataset" => $dataset, "columns" => $this->getColumns(), "title" => $title]);
+        return view("list", ["dataset" => $dataset, "columns" => $this->getColumns(), "title" => $title, "route_name" => $this->getRouteName()]);
     }
 
     public function showAddEditForm($id = NULL) {
