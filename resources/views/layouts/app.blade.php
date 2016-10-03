@@ -46,11 +46,11 @@
                 <!-- Left Side Of Navbar -->
                 @if(Auth::check())
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ route("budget.index") }}"><strong>Budżet</strong></a></li>
+                        <li><a href="{{ route("budget.index") }}"><strong>@lang("general.budget")</strong></a></li>
                         <li><a href="#">|</a></li>
-                        <li><a href="{{ route("source.index") }}">Źródła</a></li>
+                        <li><a href="{{ route("source.index") }}">@lang("general.sources")</a></li>
                         <!-- <li><a href="#">|</a></li>
-                        <li><a href="">Statystyki</a></li> -->
+                        <li><a href="">lang("general.statistics")</a></li> -->
                     </ul>
                 @endif
 
@@ -85,6 +85,13 @@
             </div>
         </div>
     </nav>
+
+    @if(Session::has("message"))
+        <div class="alert {{ Session::get("alert-class", "alert-info") }}">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ Session::get("message") }}
+        </div>
+    @endif
 
     @yield("content")
 

@@ -13,7 +13,7 @@
                             <h2>{{ $title }}</h2>
                         @endif
 
-                        {!! Form::open(["url" => "foo/bar", "class" => "form-horizontal"]) !!}
+                        {!! Form::open(["url" => $submit_route, "class" => "form-horizontal"]) !!}
 
                         @php($class = "form-control")
 
@@ -24,13 +24,13 @@
                                 <div class="col-md-6">
                                     @php(isset($field["type"]) ? $type = $field["type"] : $type = "text")
 
-                                    {{ Form::$type($field["id"], null, ["class" => $class]) }}
+                                    {{ Form::$type($field["id"], $field["value"]($dataset), ["class" => $class]) }}
                                 </div>
                             </div>
                         @endforeach
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Wyślij</button>
+                            <button type="submit" class="btn btn-primary">@lang("general.send")</button>
                         </div>
 
                         {!! Form::close() !!}
