@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Source;
+use App\Models\Type;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
@@ -28,8 +29,7 @@ class SourceController extends Controller {
     public function showAddEditForm($id = NULL) {
         if($id === NULL) {
             $dataset = new Source;
-            // TODO
-            $title = trans("general.add") . " " . mb_strtolower(trans("general.source"));
+            $title = trans("general.add");
             $submit_route = route($this->getRouteName() . ".postadd");
         } else {
             try {
@@ -40,12 +40,39 @@ class SourceController extends Controller {
                     "alert-class" => "alert-danger"
                 ]);
             }
-            // TODO
-            $title = trans("general.edit") . " " . mb_strtolower(trans("general.source"));
+
+            $title = trans("general.edit");
             $submit_route = route($this->getRouteName() . ".postedit", $id);
         }
 
+        // TODO: lcfirst z UTF-8
+        $title .= " " . mb_strtolower(trans("general.source"));
+
         return view("addedit", ["dataset" => $dataset, "fields" => $this->getFields(), "title" => $title, "submit_route" => $submit_route]);
+    }
+
+    public function store(Request $request, $id = NULL) {
+        if($id === NULL) {
+            $object = new Source;
+        } else {
+            try {
+                $object = Source::findOrFail($id);
+            } catch(ModelNotFoundException $e) {
+                return Controller::returnBack([
+                    "message" => trans("general.source_not_found"),
+                    "alert-class" => "alert-danger"
+                ]);
+            }
+        }
+
+        $object->fill($request->all());
+        $object->save();
+
+        return redirect()->route($this->getRouteName() . ".index")
+            ->with([
+                "message" => trans("general.source_saved"),
+                "alert-class" => "alert-success"
+            ]);
     }
 
     private function getColumns() {
@@ -60,7 +87,7 @@ class SourceController extends Controller {
             "title" => trans("general.type"),
             "value" => function($data) {
                 if($data->type_id) {
-                    return trans("general." . $data->type->name);
+                    return $data->type->name;
                 }
 
                 return NULL;
@@ -100,19 +127,21 @@ class SourceController extends Controller {
             "id" => "type_id",
             "title" => trans("general.type"),
             "value" => function($data) {
-                if($data->type_id) {
-                    return trans("general." . $data->type->name);
-                }
-
-                return NULL;
-            }
+                return $data->type_id;
+            },
+            "selectable" => Type::pluck("name", "id"),
+            "type" => "select"
         ],
         [
             "id" => "value",
             "title" => trans("general.value"),
             "value" => function($data) {
                 return $data->value;
-            }
+            },
+            "type" => "number",
+            "optional" => [
+                "step" => "0.01"
+            ]
         ],
         [
             "id" => "comment",

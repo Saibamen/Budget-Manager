@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Budget;
+use App\Models\Source;
+use App\Models\Type;
+use Auth;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -38,8 +41,7 @@ class BudgetController extends Controller {
     public function showAddEditForm($id = NULL) {
         if($id === NULL) {
             $dataset = new Budget;
-            // TODO
-            $title = trans("general.add") . " " . mb_strtolower(trans("general.budget"));
+            $title = trans("general.add");
             $submit_route = route($this->getRouteName() . ".postadd");
         } else {
             try {
@@ -50,12 +52,43 @@ class BudgetController extends Controller {
                     "alert-class" => "alert-danger"
                 ]);
             }
-            // TODO
-            $title = trans("general.edit") . " " . mb_strtolower(trans("general.budget"));
+
+            $title = trans("general.edit");
             $submit_route = route($this->getRouteName() . ".postedit", $id);
         }
 
+        // TODO: lcfirst z UTF-8
+        $title .= " " . mb_strtolower(trans("general.budget"));
+
         return view("addedit", ["dataset" => $dataset, "fields" => $this->getFields(), "title" => $title, "submit_route" => $submit_route]);
+    }
+
+    public function store(Request $request, $id = NULL) {
+        $request->request->add(["user_id" => Auth::user()->id]);
+
+        // TODO: sprawdź czy user jest właścicielem
+
+        if($id === NULL) {
+            $object = new Budget;
+        } else {
+            try {
+                $object = Budget::findOrFail($id);
+            } catch(ModelNotFoundException $e) {
+                return Controller::returnBack([
+                    "message" => trans("general.budget_not_found"),
+                    "alert-class" => "alert-danger"
+                ]);
+            }
+        }
+
+        $object->fill($request->all());
+        $object->save();
+
+        return redirect()->route($this->getRouteName() . ".index")
+            ->with([
+                "message" => trans("general.budget_saved"),
+                "alert-class" => "alert-success"
+            ]);
     }
 
     private function getColumns() {
@@ -76,7 +109,7 @@ class BudgetController extends Controller {
             "title" => trans("general.type"),
             "value" => function($data) {
                 if($data->type_id) {
-                    return trans("general." . $data->type->name);
+                    return $data->type->name;
                 }
 
                 return NULL;
@@ -116,30 +149,30 @@ class BudgetController extends Controller {
             "id" => "source_id",
             "title" => trans("general.source"),
             "value" => function($data) {
-                if($data->type_id) {
-                    return $data->source->name;
-                }
-
-                return NULL;
-            }
+                return $data->source_id;
+            },
+            "selectable" => Source::pluck("name", "id"),
+            "type" => "select"
         ],
         [
             "id" => "type_id",
             "title" => trans("general.type"),
             "value" => function($data) {
-                if($data->type_id) {
-                    return trans("general." . $data->type->name);
-                }
-
-                return NULL;
-            }
+                return $data->type_id;
+            },
+            "selectable" => Type::pluck("name", "id"),
+            "type" => "select"
         ],
         [
             "id" => "value",
             "title" => trans("general.value"),
             "value" => function($data) {
                 return $data->value;
-            }
+            },
+            "type" => "number",
+            "optional" => [
+                "step" => "0.01"
+            ]
         ],
         [
             "id" => "date",
@@ -150,7 +183,8 @@ class BudgetController extends Controller {
                 }
 
                 return date("j.m.Y", strtotime(Carbon::now()));
-            }
+            },
+            "type" => "date"
         ],
         [
             "id" => "comment",

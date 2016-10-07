@@ -38,6 +38,14 @@ class Budget extends Model {
         "name", "source_id", "type_id", "value", "date", "user_id", "comment"
     ];
 
+    public function setValueAttribute($value) {
+        $this->attributes["value"] = str_replace(",", ".", $value);
+    }
+
+    public function setDateAttribute($value) {
+        $this->attributes["date"] = date("Y-m-d", strtotime($value));
+    }
+
     public function source() {
         return $this->belongsTo(Source::class);
     }

@@ -31,6 +31,10 @@ class Source extends Model {
         "name", "type_id", "value", "comment"
     ];
 
+    public function setValueAttribute($value) {
+        $this->attributes["value"] = str_replace(",", ".", $value);
+    }
+
     public function type() {
         return $this->belongsTo(Type::class);
     }

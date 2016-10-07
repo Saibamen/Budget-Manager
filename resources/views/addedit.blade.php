@@ -13,18 +13,35 @@
                             <h2>{{ $title }}</h2>
                         @endif
 
-                        {!! Form::open(["url" => $submit_route, "class" => "form-horizontal"]) !!}
+                        @if($dataset->id)
+                            {!! Form::model($dataset, ["url" => $submit_route, "class" => "form-horizontal"]) !!}
+                        @else
+                            {!! Form::open(["url" => $submit_route, "class" => "form-horizontal"]) !!}
+                        @endif
 
-                        @php($class = "form-control")
+                        @php($optional_attributes = ["class" => "form-control" ])
 
                         @foreach($fields as $field)
                             <div class="form-group">
                                 {{ Form::label($field["id"], $field["title"], ["class" => "col-md-4 control-label"]) }}
 
+                                {{-- Autofocus na pierwsze pole w formularzu --}}
+                                @if($loop->first)
+                                    @php($optional_attributes = array_merge($optional_attributes, ["autofocus" => "autofocus"]))
+                                @endif
+
+                                @if(isset($field["optional"]))
+                                    @php($optional_attributes = array_merge($optional_attributes, $field["optional"]))
+                                @endif
+
                                 <div class="col-md-6">
                                     @php(isset($field["type"]) ? $type = $field["type"] : $type = "text")
 
-                                    {{ Form::$type($field["id"], $field["value"]($dataset), ["class" => $class]) }}
+                                    @if($type === "select")
+                                        {{ Form::$type($field["id"], $field["selectable"], $field["value"]($dataset), $optional_attributes) }}
+                                    @else
+                                        {{ Form::$type($field["id"], $field["value"]($dataset), $optional_attributes) }}
+                                    @endif
                                 </div>
                             </div>
                         @endforeach

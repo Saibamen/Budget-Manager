@@ -20,7 +20,13 @@ class Type extends Model {
     const INCOME = 1;
     const EXPENDITURE = 2;
 
+    protected $fillable = ["name"];
+
     public $timestamps = false;
+
+    public function getNameAttribute($value) {
+    	return trans("general." . $value);
+    }
 
     public function budgets() {
         return $this->hasMany(Budget::class);

@@ -43,7 +43,7 @@
 
                         <div class="text-center">
                             {{ $dataset->links() }}
-                            <a href="{{ route($route_name . ".addform") }}" class="btn btn-primary" role="button">@lang("general.add")</a>
+                            <a href="{{ route($route_name . ".addform") }}" class="btn btn-primary" role="button"><i class="fa fa-plus"></i> @lang("general.add")</a>
                         </div>
                     @endif
                 </div>
