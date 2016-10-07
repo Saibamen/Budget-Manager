@@ -22,7 +22,7 @@
                         @php($optional_attributes = ["class" => "form-control" ])
 
                         @foreach($fields as $field)
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has($field["id"]) ? " has-error" : "" }}">
                                 {{ Form::label($field["id"], $field["title"], ["class" => "col-md-4 control-label"]) }}
 
                                 {{-- Autofocus na pierwsze pole w formularzu --}}
@@ -41,6 +41,12 @@
                                         {{ Form::$type($field["id"], $field["selectable"], $field["value"]($dataset), $optional_attributes) }}
                                     @else
                                         {{ Form::$type($field["id"], $field["value"]($dataset), $optional_attributes) }}
+                                    @endif
+
+                                    @if($errors->has($field["id"]))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first($field["id"]) }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                             </div>

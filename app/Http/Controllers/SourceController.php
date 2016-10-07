@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SourceRequest;
 use App\Models\Source;
 use App\Models\Type;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -51,7 +52,7 @@ class SourceController extends Controller {
         return view("addedit", ["dataset" => $dataset, "fields" => $this->getFields(), "title" => $title, "submit_route" => $submit_route]);
     }
 
-    public function store(Request $request, $id = NULL) {
+    public function store(SourceRequest $request, $id = NULL) {
         if($id === NULL) {
             $object = new Source;
         } else {
@@ -121,7 +122,10 @@ class SourceController extends Controller {
             "title" => trans("general.name"),
             "value" => function($data) {
                 return $data->name;
-            }
+            },
+            "optional" => [
+                //"required" => "required"
+            ]
         ],
         [
             "id" => "type_id",
