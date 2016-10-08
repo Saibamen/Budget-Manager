@@ -21,6 +21,8 @@
                                     @foreach($columns as $column)
                                         <th>{{ $column["title"] }}</th>
                                     @endforeach
+
+                                    <th>@lang("general.actions")</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,6 +38,12 @@
                                         @foreach($columns as $column)
                                             <td>{!! $column["value"]($data) !!}</td>
                                         @endforeach
+
+                                        {{-- Akcje --}}
+                                        <td>
+                                            {{ Html::link(route($route_name . ".editform", $data->id), trans("general.edit"), ["class" => "btn btn-sm btn-primary"]) }}
+                                            {{ Html::link(route($route_name . ".editform", $data->id), trans("general.delete"), ["class" => "btn btn-sm btn-danger"]) }}
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -43,7 +51,8 @@
 
                         <div class="text-center">
                             {{ $dataset->links() }}
-                            <a href="{{ route($route_name . ".addform") }}" class="btn btn-primary" role="button"><i class="fa fa-plus"></i> @lang("general.add")</a>
+
+                            <a href="{{ route($route_name . ".addform") }}" class="btn btn-success" role="button"><i class="fa fa-plus"></i> @lang("general.add")</a>
                         </div>
                     @endif
                 </div>

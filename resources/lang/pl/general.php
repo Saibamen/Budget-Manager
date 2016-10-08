@@ -3,8 +3,11 @@
 return [
     "title" => "Tytuł",
     "name" => "Nazwa",
+    "actions" => "Akcje",
     "add" => "Dodaj",
     "edit" => "Edytuj",
+    "delete" => "Usuń",
+    "item_not_found" => "Nie znaleziono :item",
     "budget" => "Budżet",
     "your_budget" => "Twój budżet",
     "Expenditure" => "Wydatek",

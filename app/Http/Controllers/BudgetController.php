@@ -48,7 +48,7 @@ class BudgetController extends Controller {
                 $dataset = Budget::findOrFail($id);
             } catch(ModelNotFoundException $e) {
                 return Controller::returnBack([
-                    "message" => trans("general.budget_not_found"),
+                    "message" => trans("general.item_not_found", ["item" => mb_strtolower(trans("general.budget"))]),
                     "alert-class" => "alert-danger"
                 ]);
             }
@@ -75,7 +75,7 @@ class BudgetController extends Controller {
                 $object = Budget::findOrFail($id);
             } catch(ModelNotFoundException $e) {
                 return Controller::returnBack([
-                    "message" => trans("general.budget_not_found"),
+                    "message" => trans("general.item_not_found", ["item" => mb_strtolower(trans("general.budget"))]),
                     "alert-class" => "alert-danger"
                 ]);
             }

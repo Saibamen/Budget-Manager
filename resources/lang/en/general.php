@@ -3,8 +3,11 @@
 return [
     "title" => "Title",
     "name" => "Name",
+    "actions" => "Actions",
     "add" => "Add",
     "edit" => "Edit",
+    "delete" => "Usuń",
+    "item_not_found" => "Can't find :item",
     "budget" => "Budget",
     "your_budget" => "Your budget",
     "Expenditure" => "Expenditure",

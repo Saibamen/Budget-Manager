@@ -37,7 +37,7 @@ class SourceController extends Controller {
                 $dataset = Source::findOrFail($id);
             } catch(ModelNotFoundException $e) {
                 return Controller::returnBack([
-                    "message" => trans("general.source_not_found"),
+                    "message" => trans("general.item_not_found", ["item" => mb_strtolower(trans("general.source"))]),
                     "alert-class" => "alert-danger"
                 ]);
             }
@@ -60,7 +60,7 @@ class SourceController extends Controller {
                 $object = Source::findOrFail($id);
             } catch(ModelNotFoundException $e) {
                 return Controller::returnBack([
-                    "message" => trans("general.source_not_found"),
+                    "message" => trans("general.item_not_found", ["item" => mb_strtolower(trans("general.source"))]),
                     "alert-class" => "alert-danger"
                 ]);
             }
