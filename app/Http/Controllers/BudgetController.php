@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BudgetRequest;
 use App\Models\Budget;
 use App\Models\Source;
 use App\Models\Type;
@@ -62,7 +63,7 @@ class BudgetController extends Controller {
         return view("addedit", ["dataset" => $dataset, "fields" => $this->getFields(), "title" => $title, "submit_route" => $submit_route]);
     }
 
-    public function store(Request $request, $id = NULL) {
+    public function store(BudgetRequest $request, $id = NULL) {
         $request->request->add(["user_id" => Auth::user()->id]);
 
         // TODO: sprawdź czy user jest właścicielem
@@ -142,7 +143,10 @@ class BudgetController extends Controller {
             "title" => trans("general.name"),
             "value" => function($data) {
                 return $data->name;
-            }
+            },
+            "optional" => [
+                "required" => "required"
+            ]
         ],
         [
             "id" => "source_id",
@@ -151,7 +155,10 @@ class BudgetController extends Controller {
                 return $data->source_id;
             },
             "selectable" => Source::pluck("name", "id"),
-            "type" => "select"
+            "type" => "select",
+            "optional" => [
+                "required" => "required"
+            ]
         ],
         [
             "id" => "type_id",
@@ -160,7 +167,10 @@ class BudgetController extends Controller {
                 return $data->type_id;
             },
             "selectable" => Type::pluck("name", "id"),
-            "type" => "select"
+            "type" => "select",
+            "optional" => [
+                "required" => "required"
+            ]
         ],
         [
             "id" => "value",
@@ -171,7 +181,8 @@ class BudgetController extends Controller {
             "type" => "number",
             "optional" => [
                 "step" => "0.01",
-                "placeholder" => "0.00"
+                "placeholder" => "0.00",
+                "required" => "required"
             ]
         ],
         [
@@ -184,7 +195,10 @@ class BudgetController extends Controller {
 
                 return date("j.m.Y", strtotime(Carbon::now()));
             },
-            "type" => "date"
+            "type" => "date",
+            "optional" => [
+                "required" => "required"
+            ]
         ],
         [
             "id" => "comment",
