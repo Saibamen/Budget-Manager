@@ -9,7 +9,7 @@ class CreateSourcesTable extends Migration {
     public function up() {
         Schema::create("sources", function (Blueprint $table) {
             $table->increments("id");
-            $table->string("name");
+            $table->string("name")->unique();
             $table->unsignedInteger("type_id")->nullable();
             $table->decimal("value", 12, 2)->nullable();
             $table->mediumText("comment")->nullable();

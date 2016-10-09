@@ -48,7 +48,7 @@ class BudgetController extends Controller {
                 $dataset = Budget::findOrFail($id);
             } catch(ModelNotFoundException $e) {
                 return Controller::returnBack([
-                    "message" => trans("general.item_not_found", ["item" => mb_strtolower(trans("general.budget"))]),
+                    "message" => trans("general.object_not_found"),
                     "alert-class" => "alert-danger"
                 ]);
             }
@@ -57,7 +57,6 @@ class BudgetController extends Controller {
             $submit_route = route($this->getRouteName() . ".postedit", $id);
         }
 
-        // TODO: lcfirst z UTF-8
         $title .= " " . mb_strtolower(trans("general.budget"));
 
         return view("addedit", ["dataset" => $dataset, "fields" => $this->getFields(), "title" => $title, "submit_route" => $submit_route]);
@@ -75,7 +74,7 @@ class BudgetController extends Controller {
                 $object = Budget::findOrFail($id);
             } catch(ModelNotFoundException $e) {
                 return Controller::returnBack([
-                    "message" => trans("general.item_not_found", ["item" => mb_strtolower(trans("general.budget"))]),
+                    "message" => trans("general.object_not_found"),
                     "alert-class" => "alert-danger"
                 ]);
             }
@@ -86,7 +85,7 @@ class BudgetController extends Controller {
 
         return redirect()->route($this->getRouteName() . ".index")
             ->with([
-                "message" => trans("general.budget_saved"),
+                "message" => trans("general.saved"),
                 "alert-class" => "alert-success"
             ]);
     }

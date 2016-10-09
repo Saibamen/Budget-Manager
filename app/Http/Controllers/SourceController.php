@@ -37,7 +37,7 @@ class SourceController extends Controller {
                 $dataset = Source::findOrFail($id);
             } catch(ModelNotFoundException $e) {
                 return Controller::returnBack([
-                    "message" => trans("general.item_not_found", ["item" => mb_strtolower(trans("general.source"))]),
+                    "message" => trans("general.object_not_found"),
                     "alert-class" => "alert-danger"
                 ]);
             }
@@ -46,7 +46,6 @@ class SourceController extends Controller {
             $submit_route = route($this->getRouteName() . ".postedit", $id);
         }
 
-        // TODO: lcfirst z UTF-8
         $title .= " " . mb_strtolower(trans("general.source"));
 
         return view("addedit", ["dataset" => $dataset, "fields" => $this->getFields(), "title" => $title, "submit_route" => $submit_route]);
@@ -60,7 +59,7 @@ class SourceController extends Controller {
                 $object = Source::findOrFail($id);
             } catch(ModelNotFoundException $e) {
                 return Controller::returnBack([
-                    "message" => trans("general.item_not_found", ["item" => mb_strtolower(trans("general.source"))]),
+                    "message" => trans("general.object_not_found"),
                     "alert-class" => "alert-danger"
                 ]);
             }
@@ -71,7 +70,7 @@ class SourceController extends Controller {
 
         return redirect()->route($this->getRouteName() . ".index")
             ->with([
-                "message" => trans("general.source_saved"),
+                "message" => trans("general.saved"),
                 "alert-class" => "alert-success"
             ]);
     }
@@ -124,7 +123,7 @@ class SourceController extends Controller {
                 return $data->name;
             },
             "optional" => [
-                //"required" => "required"
+                "required" => "required"
             ]
         ],
         [
@@ -134,7 +133,10 @@ class SourceController extends Controller {
                 return $data->type_id;
             },
             "selectable" => Type::pluck("name", "id"),
-            "type" => "select"
+            "type" => "select",
+            "optional" => [
+                "placeholder" => @trans("general.select_or_leave_blank")
+            ]
         ],
         [
             "id" => "value",

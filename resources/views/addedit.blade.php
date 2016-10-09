@@ -19,7 +19,7 @@
                             {!! Form::open(["url" => $submit_route, "class" => "form-horizontal"]) !!}
                         @endif
 
-                        @php($optional_attributes = ["class" => "form-control" ])
+                        @php($fields_class = ["class" => "form-control"])
 
                         @foreach($fields as $field)
                             <div class="form-group{{ $errors->has($field["id"]) ? " has-error" : "" }}">
@@ -27,20 +27,26 @@
 
                                 {{-- Autofocus na pierwsze pole w formularzu --}}
                                 @if($loop->first)
-                                    @php($optional_attributes = array_merge($optional_attributes, ["autofocus" => "autofocus"]))
+                                    @php($fields_attributes["autofocus"] = "autofocus")
+                                @elseif($loop->index === 1)
+                                    @unset($fields_attributes["autofocus"])
                                 @endif
 
+                                @php(isset($field["optional"]) ? $fields_attributes = $fields_class + $field["optional"] : $fields_attributes = $fields_class)
+
                                 @if(isset($field["optional"]))
-                                    @php($optional_attributes = array_merge($optional_attributes, $field["optional"]))
+                                    @php($fields_attributes += $field["optional"])
+                                @elseif($loop->index === 1)
+                                    @unset($fields_attributes["autofocus"])
                                 @endif
 
                                 <div class="col-md-6">
                                     @php(isset($field["type"]) ? $type = $field["type"] : $type = "text")
 
                                     @if($type === "select")
-                                        {{ Form::$type($field["id"], $field["selectable"], $field["value"]($dataset), $optional_attributes) }}
+                                        {{ Form::$type($field["id"], $field["selectable"], $field["value"]($dataset), $fields_attributes) }}
                                     @else
-                                        {{ Form::$type($field["id"], $field["value"]($dataset), $optional_attributes) }}
+                                        {{ Form::$type($field["id"], $field["value"]($dataset), $fields_attributes) }}
                                     @endif
 
                                     @if($errors->has($field["id"]))

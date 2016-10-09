@@ -38,8 +38,20 @@ class Budget extends Model {
         "name", "source_id", "type_id", "value", "date", "user_id", "comment"
     ];
 
+    public static function boot() {
+        parent::boot();
+
+        static::saving(function($model){
+            foreach($model->attributes as $key => $value) {
+                $model->{$key} = empty($value) ? null : $value;
+            }
+        });
+    }
+
     public function setValueAttribute($value) {
-        $this->attributes["value"] = str_replace(",", ".", $value);
+        if(!empty($value)) {
+            $this->attributes["value"] = str_replace(",", ".", $value);
+        }
     }
 
     public function setDateAttribute($value) {

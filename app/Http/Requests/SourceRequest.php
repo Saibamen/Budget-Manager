@@ -22,7 +22,8 @@ class SourceRequest extends FormRequest {
      */
     public function rules() {
         return [
-            "name" => "required",
+            "name" => "required|unique:sources,name",
+            "type_id" => "exists:types,id"
         ];
     }
 
