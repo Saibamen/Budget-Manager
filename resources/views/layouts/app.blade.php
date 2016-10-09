@@ -46,9 +46,28 @@
                 <!-- Left Side Of Navbar -->
                 @if(Auth::check())
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ route("budget.index") }}"><strong>@lang("general.budget")</strong></a></li>
-                        <li><a href="#">|</a></li>
-                        <li><a href="{{ route("source.index") }}">@lang("general.sources")</a></li>
+                        <li class="dropdown">
+                            <a href="{{ route("budget.index") }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                @lang("general.budget") <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ route("budget.index") }}">@lang("general.list")</a></li>
+                                <li><a href="{{ route("budget.addform") }}">@lang("general.add")</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="{{ route("source.index") }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                @lang("general.sources") <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ route("source.index") }}">@lang("general.list")</a></li>
+                                <li><a href="{{ route("source.addform") }}">@lang("general.add")</a></li>
+                            </ul>
+                        </li>
+
                         <!-- <li><a href="#">|</a></li>
                         <li><a href="">lang("general.statistics")</a></li> -->
                     </ul>
