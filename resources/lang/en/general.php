@@ -10,6 +10,7 @@ return [
     "object_not_found" => "Can't find object",
     "select_or_leave_blank" => "Select or leave blank",
     "saved" => "Saved successfully",
+    "you_cant_operate" => "You can't operate on this object",
     "budget" => "Budget",
     "your_budget" => "Your budget",
     "Expenditure" => "Expenditure",

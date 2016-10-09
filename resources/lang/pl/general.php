@@ -10,6 +10,7 @@ return [
     "object_not_found" => "Nie znaleziono obiektu",
     "select_or_leave_blank" => "Wybierz lub pozostaw puste",
     "saved" => "Zapisano pomyślnie",
+    "you_cant_operate" => "Nie możesz wykonywać operacji na tym obiekcie",
     "budget" => "Budżet",
     "your_budget" => "Twój budżet",
     "Expenditure" => "Wydatek",

@@ -54,6 +54,14 @@ class BudgetController extends Controller {
                 ]);
             }
 
+            // TODO: Do funkcji... ale nie działa return
+            if($dataset->user_id !== Auth::user()->id) {
+                return Controller::returnBack([
+                    "message" => trans("general.you_cant_operate"),
+                    "alert-class" => "alert-danger"
+                ]);
+            }
+
             $title = trans("general.edit");
             $submit_route = route($this->getRouteName() . ".postedit", $id);
         }
@@ -64,10 +72,6 @@ class BudgetController extends Controller {
     }
 
     public function store(BudgetRequest $request, $id = NULL) {
-        $request->request->add(["user_id" => Auth::user()->id]);
-
-        // TODO: sprawdź czy user jest właścicielem
-
         if($id === NULL) {
             $object = new Budget;
         } else {
@@ -79,7 +83,17 @@ class BudgetController extends Controller {
                     "alert-class" => "alert-danger"
                 ]);
             }
+
+            // TODO: Do funkcji... ale nie działa return
+            if($object->user_id !== $user_id = Auth::user()->id) {
+                return Controller::returnBack([
+                    "message" => trans("general.you_cant_operate"),
+                    "alert-class" => "alert-danger"
+                ]);
+            }
         }
+
+        $request->request->add(["user_id" => $user_id]);
 
         $object->fill($request->all());
         $object->save();
