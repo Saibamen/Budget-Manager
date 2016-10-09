@@ -146,7 +146,8 @@ class SourceController extends Controller {
             },
             "type" => "number",
             "optional" => [
-                "step" => "0.01"
+                "step" => "0.01",
+                "placeholder" => "0.00"
             ]
         ],
         [

@@ -112,6 +112,9 @@ return [
     |
     */
 
-    "attributes" => [],
+    "attributes" => [
+        "type_id" => "type",
+        "source_id" => "source",
+    ],
 
 ];
