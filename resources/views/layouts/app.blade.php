@@ -53,9 +53,11 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">@lang("general.list")</li>
                                 <li><a href="{{ route("budget.index") }}">@lang("general.incomes_expenditures")</a></li>
                                 <li><a href="{{ route("budget.list", 1) }}">@lang("general.Incomes")</a></li>
                                 <li><a href="{{ route("budget.list", 2) }}">@lang("general.Expenditures")</a></li>
+                                <li class="dropdown-header">@lang("general.actions")</li>
                                 <li><a href="{{ route("budget.addform") }}">@lang("general.add")</a></li>
                             </ul>
                         </li>
@@ -66,7 +68,12 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ route("source.index") }}">@lang("general.list")</a></li>
+                                <li class="dropdown-header">@lang("general.list")</li>
+                                <li><a href="{{ route("source.index") }}">@lang("general.list_all")</a></li>
+                                <li><a href="{{ route("source.index", 1) }}">@lang("general.Incomes")</a></li>
+                                <li><a href="{{ route("source.index", 2) }}">@lang("general.Expenditures")</a></li>
+                                <li><a href="{{ route("source.index", 0) }}">@lang("general.untyped")</a></li>
+                                <li class="dropdown-header">@lang("general.actions")</li>
                                 <li><a href="{{ route("source.addform") }}">@lang("general.add")</a></li>
                             </ul>
                         </li>

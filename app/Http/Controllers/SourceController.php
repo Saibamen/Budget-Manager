@@ -14,17 +14,42 @@ class SourceController extends Controller {
         return "source";
     }
 
-    public function index() {
+    public function index($type_id = NULL) {
+        $title = trans("general.sources");
+
+        if(isset($type_id)) {
+            if($type_id == 0) {
+                $title .= " - " . mb_strtolower(trans("general.untyped"));
+            } elseif($type_id == Type::EXPENDITURE) {
+                $title .= " - " . mb_strtolower(trans("general.Expenditures"));
+            } elseif($type_id == Type::INCOME) {
+                $title .= " - " . mb_strtolower(trans("general.Incomes"));
+            } else {
+                $type_id = NULL;
+            }
+        }
+
         $dataset = Source::select("id", "name", "type_id", "value", "comment", "created_at")
             ->with(["type" => function($query) {
                 $query->select("id", "name");
             }])
+            ->when($type_id, function ($query) use ($type_id) {
+                if($type_id != 0) {
+                    return $query->where("type_id", $type_id);
+                }
+
+                return $query->where("type_id", NULL);
+            }, function ($query) use ($type_id) {
+                if($type_id == 0 && $type_id != NULL) {
+                    return $query->where("type_id", NULL);
+                }
+
+                return $query;
+            })
             ->orderBy("name")
             ->paginate(Controller::$items_per_page);
 
-        $title = trans("general.sources");
-
-        return view("list", ["dataset" => $dataset, "columns" => $this->getColumns(), "title" => $title, "route_name" => $this->getRouteName()]);
+        return view("list", ["dataset" => $dataset, "columns" => $this->getColumns($type_id), "title" => $title, "route_name" => $this->getRouteName()]);
     }
 
     public function showAddEditForm($id = NULL) {
@@ -75,22 +100,12 @@ class SourceController extends Controller {
             ]);
     }
 
-    private function getColumns() {
-        return [
+    private function getColumns($type_id = NULL) {
+        $dataset = [
         [
             "title" => trans("general.name"),
             "value" => function($data) {
                 return $data->name;
-            }
-        ],
-        [
-            "title" => trans("general.type"),
-            "value" => function($data) {
-                if($data->type_id) {
-                    return $data->type->name;
-                }
-
-                return NULL;
             }
         ],
         [
@@ -112,6 +127,23 @@ class SourceController extends Controller {
             }
         ],
         ];
+
+        // Dodawaj typ, jeśli jesteśmy na widoku ogólnym
+        if($type_id === NULL) {
+            array_splice($dataset, 1, 0, [
+                [
+                    "title" => trans("general.type"),
+                    "value" => function($data) {
+                        if($data->type_id) {
+                            return $data->type->name;
+                        }
+
+                        return NULL;
+                    }
+                ]]);
+        }
+
+        return $dataset;
     }
 
     private function getFields() {

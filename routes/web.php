@@ -15,7 +15,7 @@ Auth::routes();
 
 Route::group(["middleware" => "auth"], function () {
     Route::get("/", ["as" => "budget.index", "uses" => "BudgetController@index"]);
-    Route::get("/budget/{type_id?}", ["as" => "budget.list", "uses" => "BudgetController@index"]);
+    Route::get("budget/{type_id?}", ["as" => "budget.list", "uses" => "BudgetController@index"]);
 
     Route::get("budget/add", ["as" => "budget.addform", "uses" => "BudgetController@showAddEditForm"]);
     Route::post("budget/add", ["as" => "budget.postadd", "uses" => "BudgetController@store"]);
@@ -23,7 +23,7 @@ Route::group(["middleware" => "auth"], function () {
         );
     Route::post("budget/edit/{id}", ["as" => "budget.postedit", "uses" => "BudgetController@store"]);
 
-    Route::get("source", ["as" => "source.index", "uses" => "SourceController@index"]);
+    Route::get("source/{type_id?}", ["as" => "source.index", "uses" => "SourceController@index"]);
     Route::get("source/add", ["as" => "source.addform", "uses" => "SourceController@showAddEditForm"]);
     Route::post("source/add", ["as" => "source.postadd", "uses" => "SourceController@store"]);
     Route::get("source/edit/{id}", ["as" => "source.editform", "uses" => "SourceController@showAddEditForm"]
