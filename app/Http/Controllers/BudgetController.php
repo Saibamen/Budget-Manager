@@ -17,6 +17,10 @@ class BudgetController extends Controller {
         return "budget";
     }
 
+    private function isActionsRestricted() {
+        return true;
+    }
+
     public function index($type_id = NULL) {
         $title = trans("general.your_budget");
 
@@ -40,7 +44,7 @@ class BudgetController extends Controller {
                 return $query->where("type_id", $type_id);
             })
             ->orderBy("date", "DESC")
-            ->paginate(Controller::$items_per_page);
+            ->paginate(Controller::getItemsPerPage());
 
         /*if($dataset->count() === 0) {
             return Controller::returnBack([
@@ -49,7 +53,15 @@ class BudgetController extends Controller {
             ]);
         }*/
 
-        return view("list", ["dataset" => $dataset, "columns" => $this->getColumns($type_id), "title" => $title, "route_name" => $this->getRouteName()]);
+        $view_data = [
+            "dataset" => $dataset,
+            "columns" => $this->getColumns($type_id),
+            "title" => $title,
+            "route_name" => $this->getRouteName(),
+            "is_actions_restricted" => $this->isActionsRestricted()
+        ];
+
+        return view("list", $view_data);
     }
 
     public function showAddEditForm($id = NULL) {
@@ -81,7 +93,14 @@ class BudgetController extends Controller {
 
         $title .= " " . mb_strtolower(trans("general.budget"));
 
-        return view("addedit", ["dataset" => $dataset, "fields" => $this->getFields(), "title" => $title, "submit_route" => $submit_route]);
+        $view_data = [
+            "dataset" => $dataset,
+            "fields" => $this->getFields(),
+            "title" => $title,
+            "submit_route" => $submit_route
+        ];
+
+        return view("addedit", $view_data);
     }
 
     public function store(BudgetRequest $request, $id = NULL) {

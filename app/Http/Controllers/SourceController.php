@@ -14,6 +14,10 @@ class SourceController extends Controller {
         return "source";
     }
 
+    private function isActionsRestricted() {
+        return false;
+    }
+
     public function index($type_id = NULL) {
         $title = trans("general.sources");
 
@@ -47,9 +51,17 @@ class SourceController extends Controller {
                 return $query;
             })
             ->orderBy("name")
-            ->paginate(Controller::$items_per_page);
+            ->paginate(Controller::getItemsPerPage());
 
-        return view("list", ["dataset" => $dataset, "columns" => $this->getColumns($type_id), "title" => $title, "route_name" => $this->getRouteName()]);
+        $view_data = [
+            "dataset" => $dataset,
+            "columns" => $this->getColumns($type_id),
+            "title" => $title,
+            "route_name" => $this->getRouteName(),
+            "is_actions_restricted" => $this->isActionsRestricted()
+        ];
+
+        return view("list", $view_data);
     }
 
     public function showAddEditForm($id = NULL) {
@@ -73,7 +85,14 @@ class SourceController extends Controller {
 
         $title .= " " . mb_strtolower(trans("general.source"));
 
-        return view("addedit", ["dataset" => $dataset, "fields" => $this->getFields(), "title" => $title, "submit_route" => $submit_route]);
+        $view_data = [
+            "dataset" => $dataset,
+            "fields" => $this->getFields(),
+            "title" => $title,
+            "submit_route" => $submit_route
+        ];
+
+        return view("addedit", $view_data);
     }
 
     public function store(SourceRequest $request, $id = NULL) {

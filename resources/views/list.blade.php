@@ -43,8 +43,10 @@
 
                                         {{-- Akcje --}}
                                         <td>
-                                            {{ Html::link(route($route_name . ".editform", $data->id), trans("general.edit"), ["class" => "btn btn-sm btn-primary"]) }}
-                                            {{ Html::link(route($route_name . ".editform", $data->id), trans("general.delete"), ["class" => "btn btn-sm btn-danger"]) }}
+                                            @if(($is_actions_restricted && $data->user_id === Auth::User()->id) || !$is_actions_restricted)
+                                                {{ Html::link(route($route_name . ".editform", $data->id), trans("general.edit"), ["class" => "btn btn-sm btn-primary"]) }}
+                                                {{ Html::link(route($route_name . ".editform", $data->id), trans("general.delete"), ["class" => "btn btn-sm btn-danger"]) }}
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -53,7 +55,7 @@
 
                         <div class="text-center">
                             {{ $dataset->links() }}
-
+                            <br>
                             <a href="{{ route($route_name . ".addform") }}" class="btn btn-success" role="button"><i class="fa fa-plus"></i> @lang("general.add")</a>
                         </div>
                     @endif

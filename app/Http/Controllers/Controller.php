@@ -11,10 +11,12 @@ class Controller extends BaseController {
 
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected static $items_per_page = 20;
+    protected function getItemsPerPage() {
+        return 20;
+    }
 
     protected function returnBack($data) {
-    	// Zapobiegaj infinite loop
+        // Zapobiegaj infinite loop
         if(back()->getTargetUrl() === url()->current()) {
             return redirect(route("budget.index"))->with($data);
         }
