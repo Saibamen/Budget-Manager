@@ -10,6 +10,8 @@
                 <div class="panel-heading">@if(isset($title)) {{ $title }} @endif</div>
 
                 <div class="panel-body">
+                    @include("layouts.messages")
+
                     @if(!is_null($dataset))
                         @if(isset($title))
                             <h2>{{ $title }}</h2>

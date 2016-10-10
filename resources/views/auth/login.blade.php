@@ -7,6 +7,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading">@lang("auth.login")</div>
                 <div class="panel-body">
+                    @include("layouts.messages")
+
                     <form class="form-horizontal" role="form" method="POST" action="{{ url("/login") }}">
                         {{ csrf_field() }}
 

@@ -8,6 +8,8 @@
                 <div class="panel-heading">@lang("passwords.reset_password")</div>
 
                 <div class="panel-body">
+                    @include("layouts.messages")
+
                     <form class="form-horizontal" role="form" method="POST" action="{{ url("/password/reset") }}">
                         {{ csrf_field() }}
 

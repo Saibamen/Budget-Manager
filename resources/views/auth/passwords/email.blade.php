@@ -8,6 +8,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading">@lang("passwords.reset_password")</div>
                 <div class="panel-body">
+                    @include("layouts.messages")
+
                     @if(session("status"))
                         <div class="alert alert-success">
                             {{ session("status") }}
