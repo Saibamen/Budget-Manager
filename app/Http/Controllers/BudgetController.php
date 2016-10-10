@@ -49,7 +49,7 @@ class BudgetController extends Controller {
             ]);
         }*/
 
-        return view("list", ["dataset" => $dataset, "columns" => $this->getColumns(), "title" => $title, "route_name" => $this->getRouteName()]);
+        return view("list", ["dataset" => $dataset, "columns" => $this->getColumns($type_id), "title" => $title, "route_name" => $this->getRouteName()]);
     }
 
     public function showAddEditForm($id = NULL) {
@@ -118,8 +118,8 @@ class BudgetController extends Controller {
             ]);
     }
 
-    private function getColumns() {
-        return [
+    private function getColumns($type_id = NULL) {
+        $dataset = [
         [
             "title" => trans("general.name"),
             "value" => function($data) {
@@ -130,16 +130,6 @@ class BudgetController extends Controller {
             "title" => trans("general.source"),
             "value" => function($data) {
                 return $data->source->name;
-            }
-        ],
-        [
-            "title" => trans("general.type"),
-            "value" => function($data) {
-                if($data->type_id) {
-                    return $data->type->name;
-                }
-
-                return NULL;
             }
         ],
         [
@@ -161,6 +151,23 @@ class BudgetController extends Controller {
             }
         ],
         ];
+
+        // Dodawaj typ, jeśli jesteśmy na widoku ogólnym
+        if($type_id === NULL) {
+            array_splice($dataset, 2, 0, [
+                [
+                    "title" => trans("general.type"),
+                    "value" => function($data) {
+                        if($data->type_id) {
+                            return $data->type->name;
+                        }
+
+                        return NULL;
+                    }
+                ]]);
+        }
+
+        return $dataset;
     }
 
     private function getFields() {
