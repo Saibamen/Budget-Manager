@@ -54,8 +54,11 @@
                         </table>
 
                         <div class="text-center">
-                            {{ $dataset->links() }}
-                            <br>
+                            @if($dataset->total() > $dataset->perPage())
+                                {{ $dataset->links() }}
+                                <br>
+                            @endif
+
                             <a href="{{ route($route_name . ".addform") }}" class="btn btn-success" role="button"><i class="fa fa-plus"></i> @lang("general.add")</a>
                         </div>
                     @endif
