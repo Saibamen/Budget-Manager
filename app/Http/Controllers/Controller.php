@@ -11,6 +11,8 @@ class Controller extends BaseController {
 
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    protected static $items_per_page = 20;
+
     protected function returnBack($data) {
     	// Zapobiegaj infinite loop
         if(back()->getTargetUrl() === url()->current()) {

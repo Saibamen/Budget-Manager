@@ -72,7 +72,7 @@
                                     <i class="fa fa-btn fa-user-plus"></i> @lang("auth.register")
                                 </button>
                                 <br><br>
-                                @lang("auth.have_account") <a href="{{ url("/login") }}">@lang("auth.sign_in")</a>
+                                @lang("auth.have_account") <a href="{{ route("login") }}">@lang("auth.sign_in")</a>
                             </div>
                         </div>
                     </form>

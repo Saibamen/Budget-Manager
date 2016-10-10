@@ -20,7 +20,7 @@ class SourceController extends Controller {
                 $query->select("id", "name");
             }])
             ->orderBy("name")
-            ->paginate(20);
+            ->paginate(Controller::$items_per_page);
 
         $title = trans("general.sources");
 

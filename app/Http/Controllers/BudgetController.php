@@ -17,15 +17,30 @@ class BudgetController extends Controller {
         return "budget";
     }
 
-    public function index() {
+    public function index($type_id = NULL) {
+        $title = trans("general.your_budget");
+
+        if(isset($type_id)) {
+            if($type_id == Type::EXPENDITURE) {
+                $title .= " - " . mb_strtolower(trans("general.Expenditures"));
+            } elseif($type_id == Type::INCOME) {
+                $title .= " - " . mb_strtolower(trans("general.Incomes"));
+            } else {
+                $type_id = NULL;
+            }
+        }
+
         $dataset = Budget::select("id", "name", "source_id", "type_id", "value", "date", "user_id", "comment")
             ->with(["source" => function($query) {
                 $query->select("id", "name");
             }, "type" => function($query) {
                 $query->select("id", "name");
             }])
+            ->when($type_id, function ($query) use ($type_id) {
+                return $query->where("type_id", $type_id);
+            })
             ->orderBy("date", "DESC")
-            ->paginate(20);
+            ->paginate(Controller::$items_per_page);
 
         /*if($dataset->count() === 0) {
             return Controller::returnBack([
@@ -33,8 +48,6 @@ class BudgetController extends Controller {
                 "alert-class" => "alert-danger"
             ]);
         }*/
-
-        $title = trans("general.your_budget");
 
         return view("list", ["dataset" => $dataset, "columns" => $this->getColumns(), "title" => $title, "route_name" => $this->getRouteName()]);
     }

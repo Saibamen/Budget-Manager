@@ -11,10 +11,11 @@
     <title>@if(isset($title)){{ $title }} |@endif Budget Manager - Zarządzaj swoim budżetem</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    {!! Html::style("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css") !!}
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    {!! Html::style("css/app.css") !!}
+    {!! Html::style("css/general.css") !!}
 
     <!-- Scripts -->
     <script>
@@ -52,7 +53,9 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ route("budget.index") }}">@lang("general.list")</a></li>
+                                <li><a href="{{ route("budget.index") }}">@lang("general.incomes_expenditures")</a></li>
+                                <li><a href="{{ route("budget.list", 1) }}">@lang("general.Incomes")</a></li>
+                                <li><a href="{{ route("budget.list", 2) }}">@lang("general.Expenditures")</a></li>
                                 <li><a href="{{ route("budget.addform") }}">@lang("general.add")</a></li>
                             </ul>
                         </li>
@@ -77,7 +80,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if(Auth::guest())
-                        <li><a href="{{ url("/login") }}">@lang("auth.login")</a></li>
+                        <li><a href="{{ route("login") }}">@lang("auth.login")</a></li>
                         <li><a href="{{ url("/register") }}">@lang("auth.register")</a></li>
                     @else
                         <li class="dropdown">
@@ -115,6 +118,6 @@
     @yield("content")
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    {!! Html::script("js/app.js") !!}
 </body>
 </html>

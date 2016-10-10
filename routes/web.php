@@ -15,6 +15,8 @@ Auth::routes();
 
 Route::group(["middleware" => "auth"], function () {
     Route::get("/", ["as" => "budget.index", "uses" => "BudgetController@index"]);
+    Route::get("/budget/{type_id?}", ["as" => "budget.list", "uses" => "BudgetController@index"]);
+
     Route::get("budget/add", ["as" => "budget.addform", "uses" => "BudgetController@showAddEditForm"]);
     Route::post("budget/add", ["as" => "budget.postadd", "uses" => "BudgetController@store"]);
     Route::get("budget/edit/{id}", ["as" => "budget.editform", "uses" => "BudgetController@showAddEditForm"]
