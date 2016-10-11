@@ -46,13 +46,6 @@ class BudgetController extends Controller {
             ->orderBy("date", "DESC")
             ->paginate(Controller::getItemsPerPage());
 
-        /*if($dataset->count() === 0) {
-            return Controller::returnBack([
-                "message" => trans("general.games_not_found"),
-                "alert-class" => "alert-danger"
-            ]);
-        }*/
-
         $view_data = [
             "dataset" => $dataset,
             "columns" => $this->getColumns($type_id),
@@ -60,6 +53,13 @@ class BudgetController extends Controller {
             "route_name" => $this->getRouteName(),
             "is_actions_restricted" => $this->isActionsRestricted()
         ];
+
+        /*if($dataset->count() === 0) {
+            return Controller::returnBack([
+                "message" => trans("general.games_not_found"),
+                "alert-class" => "alert-info"
+            ]);
+        }*/
 
         return view("list", $view_data);
     }
@@ -210,7 +210,9 @@ class BudgetController extends Controller {
             "selectable" => Source::pluck("name", "id"),
             "type" => "select",
             "optional" => [
-                "required" => "required"
+                "required" => "required",
+                "data-url" => url("/") . "/source/json/",
+                "placeholder" => trans("general.select")
             ]
         ],
         [
@@ -222,7 +224,8 @@ class BudgetController extends Controller {
             "selectable" => Type::pluck("name", "id"),
             "type" => "select",
             "optional" => [
-                "required" => "required"
+                "required" => "required",
+                "placeholder" => trans("general.select")
             ]
         ],
         [

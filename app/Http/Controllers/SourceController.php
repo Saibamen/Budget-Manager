@@ -193,7 +193,7 @@ class SourceController extends Controller {
             "selectable" => Type::pluck("name", "id"),
             "type" => "select",
             "optional" => [
-                "placeholder" => @trans("general.select_or_leave_blank")
+                "placeholder" => trans("general.select_or_leave_blank")
             ]
         ],
         [
