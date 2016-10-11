@@ -18,6 +18,13 @@ class SourceController extends Controller {
         return false;
     }
 
+    public function getJSONSourceData($id) {
+        $data = Source::select("type_id", "value")
+            ->where("id", $id)->get();
+
+        return response()->json($data);
+    }
+
     public function index($type_id = NULL) {
         $title = trans("general.sources");
 

@@ -24,6 +24,7 @@ Route::group(["middleware" => "auth"], function () {
     Route::post("budget/edit/{id}", ["as" => "budget.postedit", "uses" => "BudgetController@store"]);
 
     Route::get("source/{type_id?}", ["as" => "source.index", "uses" => "SourceController@index"])->where(["type_id" => "[0-9]+"]);
+    Route::get("source/json/{id}", ["as" => "source.json", "uses" => "SourceController@getJSONSourceData"])->where(["id" => "[0-9]+"]);
     Route::get("source/add", ["as" => "source.addform", "uses" => "SourceController@showAddEditForm"]);
     Route::post("source/add", ["as" => "source.postadd", "uses" => "SourceController@store"]);
     Route::get("source/edit/{id}", ["as" => "source.editform", "uses" => "SourceController@showAddEditForm"]

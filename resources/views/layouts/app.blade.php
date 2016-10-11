@@ -119,5 +119,6 @@
 
     <!-- Scripts -->
     {!! Html::script("js/app.js") !!}
+    {!! Html::script("js/changefieldsvalue.js") !!}
 </body>
 </html>
