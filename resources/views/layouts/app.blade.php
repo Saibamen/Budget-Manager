@@ -115,6 +115,7 @@
         </div>
     </nav>
 
+    <!-- TODO: osobny css -->
     <div id="ajax-loading" style="position: fixed; z-index: 999; height: 0; width: 0; margin: auto; top: 0; left: 0; bottom: 0; right: 0; display: none;">
         <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
     </div>

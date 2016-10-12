@@ -30,4 +30,6 @@ return [
     "type" => "Type",
     "value" => "Value",
     "comment" => "Comment",
+    "yes" => "Yes",
+    "no" => "No"
 ];
