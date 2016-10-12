@@ -97,7 +97,8 @@ class BudgetController extends Controller {
             "dataset" => $dataset,
             "fields" => $this->getFields(),
             "title" => $title,
-            "submit_route" => $submit_route
+            "submit_route" => $submit_route,
+            "route_name" => $this->getRouteName()
         ];
 
         return view("addedit", $view_data);

@@ -20,7 +20,7 @@ class SourceController extends Controller {
 
     public function getJSONSourceData($id) {
         $data = Source::select("type_id", "value")
-            ->where("id", $id)->get();
+            ->where("id", $id)->first();
 
         return response()->json($data);
     }
@@ -96,7 +96,8 @@ class SourceController extends Controller {
             "dataset" => $dataset,
             "fields" => $this->getFields(),
             "title" => $title,
-            "submit_route" => $submit_route
+            "submit_route" => $submit_route,
+            "route_name" => $this->getRouteName()
         ];
 
         return view("addedit", $view_data);

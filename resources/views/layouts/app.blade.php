@@ -123,6 +123,6 @@
 
     <!-- Scripts -->
     {!! Html::script("js/app.js") !!}
-    {!! Html::script("js/changefieldsvalue.js") !!}
+    @yield("js")
 </body>
 </html>

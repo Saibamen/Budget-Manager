@@ -72,3 +72,9 @@
     </div>
 </div>
 @endsection
+
+@section("js")
+    @if($route_name === "budget")
+        {!! Html::script("js/changefieldsvalue.js") !!}
+    @endif
+@endsection

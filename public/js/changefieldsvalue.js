@@ -4,9 +4,9 @@ $(document).ready(function() {
             $("#ajax-loading").show();
 
             $.getJSON($("#source_id").data("url") + $("#source_id").val(), function(data) {
-                if(data[0]) {
-                    $("#type_id").val(data[0].type_id);
-                    $("#value").val(data[0].value);
+                if(data) {
+                    $("#type_id").val(data.type_id);
+                    $("#value").val(data.value);
                 }
 
                 $("#ajax-loading").hide();
