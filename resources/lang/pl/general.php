@@ -28,6 +28,7 @@ return [
     "source" => "Źródło",
     "source_delete_warning" => "<strong>Uwaga!</strong> Próbujesz usunąć źródło. Spowoduje to usunięcie wszystkich przychodów i wydatków w budżecie.",
     "sources" => "Źródła",
+    "statistics" => "Statystyki",
     "title" => "Tytuł",
     "type" => "Typ",
     "untyped" => "Bez typu",

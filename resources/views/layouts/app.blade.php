@@ -79,8 +79,8 @@
                             </ul>
                         </li>
 
-                        <!-- <li><a href="#">|</a></li>
-                        <li><a href="">lang("general.statistics")</a></li> -->
+                        <li><a href="#">|</a></li>
+                        <li><a href="">@lang("general.statistics")</a></li>
                     </ul>
                 @endif
 

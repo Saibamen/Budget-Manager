@@ -31,5 +31,6 @@ Route::group(["middleware" => "auth"], function () {
     Route::post("source/edit/{id}", ["as" => "source.postedit", "uses" => "SourceController@store"])->where(["id" => "[0-9]+"]);
     Route::delete("source/delete/{id}", ["as" => "source.delete", "uses" => "SourceController@delete"])->where(["id" => "[0-9]+"]);
 
-    //Route::get("/stats", ["as" => "stats.index", "uses" => "StatController@index"]);
+    Route::get("stats", ["as" => "stats.index", "uses" => "StatsController@index"]);
+    Route::get("stats/json", ["as" => "stats.json", "uses" => "StatsController@getJSONStatsData"]);
 });
