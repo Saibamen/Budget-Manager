@@ -21,6 +21,12 @@ class BudgetController extends Controller {
         return true;
     }
 
+    public function delete($id) {
+        $data = Budget::findOrFail($id)->delete();
+
+        return response()->json($data);
+    }
+
     public function index($type_id = NULL) {
         $title = trans("general.your_budget");
 
@@ -118,7 +124,7 @@ class BudgetController extends Controller {
             }
 
             // TODO: Do funkcji... ale nie działa return
-            if($object->user_id !== $user_id = Auth::user()->id) {
+            if($object->user_id !== Auth::user()->id) {
                 return Controller::returnBack([
                     "message" => trans("general.you_cant_operate"),
                     "alert-class" => "alert-danger"
@@ -126,7 +132,7 @@ class BudgetController extends Controller {
             }
         }
 
-        $request->request->add(["user_id" => $user_id]);
+        $request->request->add(["user_id" => Auth::user()->id]);
 
         $object->fill($request->all());
         $object->save();

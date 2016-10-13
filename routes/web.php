@@ -21,7 +21,7 @@ Route::group(["middleware" => "auth"], function () {
     Route::post("budget/add", ["as" => "budget.postadd", "uses" => "BudgetController@store"]);
     Route::get("budget/edit/{id}", ["as" => "budget.editform", "uses" => "BudgetController@showAddEditForm"])->where(["id" => "[0-9]+"]);
     Route::post("budget/edit/{id}", ["as" => "budget.postedit", "uses" => "BudgetController@store"])->where(["id" => "[0-9]+"]);
-    //Route::delete("budget/delete/{id}", ["as" => "budget.delete", "uses" => "BudgetController@delete"])->where(["id" => "[0-9]+"]);
+    Route::delete("budget/delete/{id}", ["as" => "budget.delete", "uses" => "BudgetController@delete"])->where(["id" => "[0-9]+"]);
 
     Route::get("source/{type_id?}", ["as" => "source.index", "uses" => "SourceController@index"])->where(["type_id" => "[0-9]+"]);
     Route::get("source/json/{id}", ["as" => "source.json", "uses" => "SourceController@getJSONSourceData"])->where(["id" => "[0-9]+"]);
@@ -29,7 +29,7 @@ Route::group(["middleware" => "auth"], function () {
     Route::post("source/add", ["as" => "source.postadd", "uses" => "SourceController@store"]);
     Route::get("source/edit/{id}", ["as" => "source.editform", "uses" => "SourceController@showAddEditForm"])->where(["id" => "[0-9]+"]);
     Route::post("source/edit/{id}", ["as" => "source.postedit", "uses" => "SourceController@store"])->where(["id" => "[0-9]+"]);
-    //Route::delete("source/delete/{id}", ["as" => "source.delete", "uses" => "SourceController@delete"])->where(["id" => "[0-9]+"]);
+    Route::delete("source/delete/{id}", ["as" => "source.delete", "uses" => "SourceController@delete"])->where(["id" => "[0-9]+"]);
 
     //Route::get("/stats", ["as" => "stats.index", "uses" => "StatController@index"]);
 });

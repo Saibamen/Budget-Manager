@@ -45,7 +45,7 @@
                                         <td>
                                             @if(($is_actions_restricted && $data->user_id === Auth::User()->id) || !$is_actions_restricted)
                                                 {{ Html::link(route($route_name . ".editform", $data->id), trans("general.edit"), ["class" => "btn btn-sm btn-primary"]) }}
-                                                {{ Form::button(trans("general.delete"), ["class" => "btn btn-sm btn-danger", "data-toggle" => "modal", "data-target" => "#delete-modal", "data-id" => $data->id]) }}
+                                                {{ Form::button(trans("general.delete"), ["class" => "btn btn-sm btn-danger", "data-toggle" => "modal", "data-target" => "#delete-modal", "data-id" => $data->id, "data-name" => $data->name]) }}
                                             @endif
                                         </td>
                                     </tr>

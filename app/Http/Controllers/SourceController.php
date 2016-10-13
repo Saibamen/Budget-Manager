@@ -25,6 +25,12 @@ class SourceController extends Controller {
         return response()->json($data);
     }
 
+    public function delete($id) {
+        $data = Source::findOrFail($id)->delete();
+
+        return response()->json($data);
+    }
+
     public function index($type_id = NULL) {
         $title = trans("general.sources");
 
