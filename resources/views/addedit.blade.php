@@ -73,8 +73,28 @@
 </div>
 @endsection
 
+@section("css")
+    @if($route_name === "budget")
+        {!! Html::style("css/bootstrap-datepicker3.min.css") !!}
+    @endif
+@endsection
+
 @section("js")
     @if($route_name === "budget")
+        {!! Html::script("js/bootstrap-datepicker.min.js") !!}
         {!! Html::script("js/changefieldsvalue.js") !!}
+        @if(trans()->locale() !== "en")
+            {!! Html::script("js/bootstrap-datepicker." . trans()->locale() . ".min.js") !!}
+        @endif
+
+        <script type="text/javascript">
+            $("#date").datepicker({
+                format: "d.mm.yyyy",
+                @if(trans()->locale() !== "en")
+                    language: "{{ trans()->locale() }}",
+                @endif
+                autoclose: true
+            });
+        </script>
     @endif
 @endsection

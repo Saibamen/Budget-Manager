@@ -26,7 +26,9 @@ class SourceController extends Controller {
     }
 
     public function delete($id) {
-        $data = Source::findOrFail($id)->delete();
+        Source::destroy($id);
+
+        $data = ["class" => "alert-success", "message" => trans("general.deleted")];
 
         return response()->json($data);
     }

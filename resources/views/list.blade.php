@@ -17,41 +17,43 @@
                             <h2>{{ $title }}</h2>
                         @endif
 
-                        <table class="table table-striped table-hover table-responsive">
-                            <thead>
-                                <tr class="active">
-                                    @foreach($columns as $column)
-                                        <th>{{ $column["title"] }}</th>
-                                    @endforeach
-
-                                    <th>@lang("general.actions")</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($dataset as $data)
-                                    @php
-                                        if(isset($data->type_id)) {
-                                            $data->type_id === $Type::INCOME ? $color_class = "success" : $color_class = NULL;
-                                            $data->type_id === $Type::EXPENDITURE ? $color_class = "danger" : NULL;
-                                        }
-                                    @endphp
-
-                                    <tr class="{{ $color_class or NULL }}">
+                        @if($dataset->total() > 0)
+                            <table class="table table-striped table-hover table-responsive">
+                                <thead>
+                                    <tr class="active">
                                         @foreach($columns as $column)
-                                            <td>{!! $column["value"]($data) !!}</td>
+                                            <th>{{ $column["title"] }}</th>
                                         @endforeach
 
-                                        {{-- Akcje --}}
-                                        <td>
-                                            @if(($is_actions_restricted && $data->user_id === Auth::User()->id) || !$is_actions_restricted)
-                                                {{ Html::link(route($route_name . ".editform", $data->id), trans("general.edit"), ["class" => "btn btn-sm btn-primary"]) }}
-                                                {{ Form::button(trans("general.delete"), ["class" => "btn btn-sm btn-danger", "data-toggle" => "modal", "data-target" => "#delete-modal", "data-id" => $data->id, "data-name" => $data->name]) }}
-                                            @endif
-                                        </td>
+                                        <th>@lang("general.actions")</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach($dataset as $data)
+                                        @php
+                                            if(isset($data->type_id)) {
+                                                $data->type_id === $Type::INCOME ? $color_class = "success" : $color_class = NULL;
+                                                $data->type_id === $Type::EXPENDITURE ? $color_class = "danger" : NULL;
+                                            }
+                                        @endphp
+
+                                        <tr class="{{ $color_class or NULL }}">
+                                            @foreach($columns as $column)
+                                                <td>{!! $column["value"]($data) !!}</td>
+                                            @endforeach
+
+                                            {{-- Akcje --}}
+                                            <td>
+                                                @if(($is_actions_restricted && $data->user_id === Auth::User()->id) || !$is_actions_restricted)
+                                                    {{ Html::link(route($route_name . ".editform", $data->id), trans("general.edit"), ["class" => "btn btn-sm btn-primary"]) }}
+                                                    {{ Form::button(trans("general.delete"), ["class" => "btn btn-sm btn-danger", "data-toggle" => "modal", "data-target" => "#delete-modal", "data-id" => $data->id, "data-name" => $data->name]) }}
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @endif
 
                         <div class="text-center">
                             @if($dataset->total() > $dataset->perPage())

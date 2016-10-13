@@ -6,7 +6,12 @@
                 <h4 class="modal-title" id="myModalLabel">@lang("general.delete")</h4>
             </div>
             <div class="modal-body">
-                Czy na pewno chcesz usunąć <b></b>?
+                @if($route_name === "source")
+                    @lang("general.source_delete_warning")
+                    <br><br>
+                @endif
+
+                @lang("general.really_delete") <strong></strong>?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">@lang("general.no")</button>

@@ -22,7 +22,9 @@ class BudgetController extends Controller {
     }
 
     public function delete($id) {
-        $data = Budget::findOrFail($id)->delete();
+        Budget::destroy($id);
+
+        $data = ["class" => "alert-success", "message" => trans("general.deleted")];
 
         return response()->json($data);
     }

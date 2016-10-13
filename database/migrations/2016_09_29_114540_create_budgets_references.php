@@ -8,7 +8,7 @@ class CreateBudgetsReferences extends Migration {
 
     public function up() {
         Schema::table("budgets", function (Blueprint $table) {
-            $table->foreign("source_id")->references("id")->on("sources");
+            $table->foreign("source_id")->references("id")->on("sources")->onDelete("cascade");
             $table->foreign("type_id")->references("id")->on("types");
             $table->foreign("user_id")->references("id")->on("users");
         });

@@ -1,6 +1,4 @@
-@if(Session::has("message"))
-    <div class="alert {{ Session::get("alert-class", "alert-info") }}">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        {{ Session::get("message") }}
-    </div>
-@endif
+<div id="alert-box" class="alert @if(Session::has("message")){{ Session::get("alert-class", "alert-info") }}@endif" @if(!Session::has("message"))style="display: none;"@endif>
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <div id="alert-message">{{ Session::get("message") }}</div>
+</div>
