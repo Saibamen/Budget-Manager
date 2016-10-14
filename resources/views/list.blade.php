@@ -32,14 +32,14 @@
                                     @foreach($dataset as $data)
                                         @php
                                             if(isset($data->type_id)) {
-                                                $data->type_id === $Type::INCOME ? $color_class = "success" : $color_class = NULL;
-                                                $data->type_id === $Type::EXPENDITURE ? $color_class = "danger" : NULL;
+                                                $data->type_id === $Type::INCOME ? ($color_class = "success" AND $type_icon = "<i class='fa fa-arrow-up' aria-hidden='true'></i>") : $color_class = NULL;
+                                                $data->type_id === $Type::EXPENDITURE ? ($color_class = "danger" AND $type_icon = "<i class='fa fa-arrow-down' aria-hidden='true'></i>") : NULL;
                                             }
                                         @endphp
 
                                         <tr class="{{ $color_class or NULL }}">
                                             @foreach($columns as $column)
-                                                <td>{!! $column["value"]($data) !!}</td>
+                                                <td>@if(isset($column["id"]) && $column["id"] === "type"){!! $type_icon or NULL !!} @endif{!! $column["value"]($data) !!}</td>
                                             @endforeach
 
                                             {{-- Akcje --}}

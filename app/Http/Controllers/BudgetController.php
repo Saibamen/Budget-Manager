@@ -184,6 +184,7 @@ class BudgetController extends Controller {
         if($type_id === NULL) {
             array_splice($dataset, 2, 0, [
                 [
+                    "id" => "type",
                     "title" => trans("general.type"),
                     "value" => function($data) {
                         if($data->type_id) {
