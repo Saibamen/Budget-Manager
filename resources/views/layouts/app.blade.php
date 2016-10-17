@@ -55,11 +55,11 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li class="dropdown-header">@lang("general.list")</li>
-                                <li><a href="{{ route("budget.index") }}">@lang("general.incomes_expenditures")</a></li>
-                                <li><a href="{{ route("budget.list", 1) }}">@lang("general.Incomes")</a></li>
-                                <li><a href="{{ route("budget.list", 2) }}">@lang("general.Expenditures")</a></li>
+                                <li><a href="{{ route("budget.index") }}"><i class="fa fa-list-ul" aria-hidden="true"></i> @lang("general.incomes_expenditures")</a></li>
+                                <li><a href="{{ route("budget.list", 1) }}"><i class="fa fa-arrow-up" aria-hidden="true"></i> @lang("general.Incomes")</a></li>
+                                <li><a href="{{ route("budget.list", 2) }}"><i class="fa fa-arrow-down" aria-hidden="true"></i> @lang("general.Expenditures")</a></li>
                                 <li class="dropdown-header">@lang("general.actions")</li>
-                                <li><a href="{{ route("budget.addform") }}">@lang("general.add")</a></li>
+                                <li><a href="{{ route("budget.addform") }}"><i class="fa fa-plus" aria-hidden="true"></i> @lang("general.add")</a></li>
                             </ul>
                         </li>
 
@@ -70,17 +70,16 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li class="dropdown-header">@lang("general.list")</li>
-                                <li><a href="{{ route("source.index") }}">@lang("general.list_all")</a></li>
-                                <li><a href="{{ route("source.index", 1) }}">@lang("general.Incomes")</a></li>
-                                <li><a href="{{ route("source.index", 2) }}">@lang("general.Expenditures")</a></li>
-                                <li><a href="{{ route("source.index", 0) }}">@lang("general.untyped")</a></li>
+                                <li><a href="{{ route("source.index") }}"><i class="fa fa-list-ul" aria-hidden="true"></i> @lang("general.list_all")</a></li>
+                                <li><a href="{{ route("source.index", 1) }}"><i class="fa fa-arrow-up" aria-hidden="true"></i> @lang("general.Incomes")</a></li>
+                                <li><a href="{{ route("source.index", 2) }}"><i class="fa fa-arrow-down" aria-hidden="true"></i> @lang("general.Expenditures")</a></li>
+                                <li><a href="{{ route("source.index", 0) }}"><i class="fa fa-question" aria-hidden="true"></i> @lang("general.untyped")</a></li>
                                 <li class="dropdown-header">@lang("general.actions")</li>
-                                <li><a href="{{ route("source.addform") }}">@lang("general.add")</a></li>
+                                <li><a href="{{ route("source.addform") }}"><i class="fa fa-plus" aria-hidden="true"></i> @lang("general.add")</a></li>
                             </ul>
                         </li>
 
-                        <li><a href="#">|</a></li>
-                        <li><a href="">@lang("general.statistics")</a></li>
+                        <li><a href="{{ route("stats.index") }}">@lang("general.statistics") <i class="fa fa-pie-chart" aria-hidden="true"></i></a></li>
                     </ul>
                 @endif
 
@@ -98,13 +97,13 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="{{ url("/logout") }}"
+                                    <a href="{{ route("logout") }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                         @lang("auth.logout")
                                     </a>
 
-                                    <form id="logout-form" action="{{ url("/logout") }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route("logout") }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
                                 </li>

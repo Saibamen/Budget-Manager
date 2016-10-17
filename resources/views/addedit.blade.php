@@ -27,17 +27,11 @@
                             <div class="form-group{{ $errors->has($field["id"]) ? " has-error" : "" }}">
                                 {{ Form::label($field["id"], $field["title"], ["class" => "col-md-4 control-label"]) }}
 
+                                @php(isset($field["optional"]) ? $fields_attributes = $fields_class + $field["optional"] : $fields_attributes = $fields_class)
+
                                 {{-- Autofocus na pierwsze pole w formularzu --}}
                                 @if($loop->first)
                                     @php($fields_attributes["autofocus"] = "autofocus")
-                                @elseif($loop->index === 1)
-                                    @unset($fields_attributes["autofocus"])
-                                @endif
-
-                                @php(isset($field["optional"]) ? $fields_attributes = $fields_class + $field["optional"] : $fields_attributes = $fields_class)
-
-                                @if(isset($field["optional"]))
-                                    @php($fields_attributes += $field["optional"])
                                 @elseif($loop->index === 1)
                                     @unset($fields_attributes["autofocus"])
                                 @endif

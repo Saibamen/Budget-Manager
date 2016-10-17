@@ -10,7 +10,12 @@
                 <div class="panel-heading">@if(isset($title)) {{ $title }} @endif</div>
 
                 <div class="panel-body">
-                    <div id="temp-stat" data-url="{{ route("stats.json") }}"></div>
+                    <div class="col-md-6">
+                        <div id="stat" data-url="{{ route("stats.json") }}"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="stat-2"></div>
+                    </div>
                 </div>
             </div>
         </div>
