@@ -18,8 +18,15 @@
 
 ## Wymagania
 
-- PHP 7
-- Najnowsza wersja [Composera](https://getcomposer.org/)
+- PHP >= 7.0.12 (na niektórych serwerach localhost może nawet wystarczyć 5.6.21 lub nowsza)
+- MySQL >= 5.5.X
+- Najnowsza wersja [Composera](https://getcomposer.org/) - aktualizacja komendą `composer selfupdate`
+- Następujące rozszerzenia włączone na serwerze PHP:
+  - OpenSSL
+  - PDO
+  - Mbstring
+  - Tokenizer
+  - XML
 
 ## Instalacja - localhost
 
@@ -38,7 +45,8 @@
    mkdir storage/logs
    ```
 4. Wykonaj następujące polecenia:
-  -```
+
+  ```
   composer install --no-interaction
   php artisan key:generate
   php artisan migrate
@@ -54,32 +62,53 @@
 3. W `index.php` z folderu `public` zamień obie ścieżki tak, aby znajdywały główny folder z kroku 2
 4. Zmień nazwę pliku `.env.example` na `.env` oraz zmień w nim `APP_URL`, połączenie do bazy danych oraz maila
 5. Ustaw chmody oraz utwórz poniższe foldery:
-  -```
-  - mkdir bootstrap/cache
-  - mkdir storage
-  - mkdir storage/app
-  - mkdir storage/framework
-  - mkdir storage/framework/sessions
-  - mkdir storage/framework/cache
-  - mkdir storage/framework/views
-  - mkdir storage/logs
-  - chmod -R 777 bootstrap/cache
-  - chmod -R 777 storage
-  -```
+
+  ```
+  mkdir bootstrap/cache
+  mkdir storage
+  mkdir storage/app
+  mkdir storage/framework
+  mkdir storage/framework/sessions
+  mkdir storage/framework/cache
+  mkdir storage/framework/views
+  mkdir storage/logs
+  chmod -R 777 bootstrap/cache
+  chmod -R 777 storage
+  ```
 6. Wykonaj następujące polecenia:
-  -```
-  - composer install --no-interaction
-  - php artisan key:generate
-  - php artisan migrate
-  - php artisan db:seed
+
+  ```
+  composer install --no-interaction
+  php artisan key:generate
+  php artisan migrate
+  php artisan db:seed
   ```
 
 ## Funkcje
 
-- [x] TODO
-- [ ] TODO 2
+- [x] Logowanie do systemu
+- [x] Wylogowanie z systemu
+- [] Resetowanie hasła
+- [x] CRUD źródeł przychodów i wydatków
+- [] Seeder źródeł przychodów i wydatków
+- [x] CRUD przychodów i wydatków
+- [] Seeder źródeł przychodów i wydatków
+- [x] Uzupełnienie przychodów i wydatków ze źródeł przez AJAXa
+- [] Wykres podsumowujący zsumowane przychody i wydatki względem dni, tygodni lub miesięcy
+- [] Wykres podsumowujący procentowe udziały źródeł przychodów i wydatków
+- [x] Wykres podsumowujący wydatki z podziałem na użytkowników
+- [] Wykres podsumowujący oszczędności, czyli różnicę między przychodami i wydatkami w obrębie miesiąca
+- [] Obsługa tłumaczeń
 
 ## Demo: [budgetmanager.it-maniak.pl](http://budgetmanager.it-maniak.pl/)
+
+Użytkownik Tomek:
+   Login: test@test.pl
+   Hasło: test
+
+Użytkownik Kasia:
+   Login: user@test.pl
+   Hasło: test
 
 ## O autorze
 
