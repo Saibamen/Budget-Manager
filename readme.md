@@ -26,15 +26,16 @@
 1. Wypakuj całą zawartość do osobnego folderu w htdocs
 2. Zmień nazwę pliku `.env.example` na `.env` oraz zmień w nim `APP_URL`, połączenie do bazy danych oraz maila
 3. Utwórz poniższe foldery:
-```
-mkdir bootstrap/cache
-mkdir storage
-mkdir storage/app
-mkdir storage/framework
-mkdir storage/framework/sessions
-mkdir storage/framework/cache
-mkdir storage/framework/views
-```
+   ```
+   mkdir bootstrap/cache
+   mkdir storage
+   mkdir storage/app
+   mkdir storage/framework
+   mkdir storage/framework/sessions
+   mkdir storage/framework/cache
+   mkdir storage/framework/views
+   mkdir storage/logs
+   ```
 4. Wykonaj następujące polecenia:
   - `composer install --no-interaction`
   - `php artisan key:generate`
@@ -57,6 +58,7 @@ mkdir storage/framework/views
   - mkdir storage/framework/sessions
   - mkdir storage/framework/cache
   - mkdir storage/framework/views
+  - mkdir storage/logs
   - chmod -R 777 bootstrap/cache
   - chmod -R 777 storage
 6. Wykonaj następujące polecenia:
