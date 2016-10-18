@@ -83,6 +83,7 @@
   php artisan migrate
   php artisan db:seed
   ```
+Uwaga! Na niektórych hostingach polecenia z kroku 6 mogą nie wykonywać się poprawnie! Należy wtedy skorzystać z pomocy hostingodawcy.
 
 ## Funkcje
 

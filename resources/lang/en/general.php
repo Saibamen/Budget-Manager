@@ -26,7 +26,7 @@ return [
     "select_or_leave_blank" => "Select or leave blank",
     "send" => "Send",
     "source" => "Source",
-    "source_delete_warning" => "<b>Warning!</b> You are trying to remove the source. This will remove all the incomes and expenditures in budget.",
+    "source_delete_warning" => "<b>Warning!</b> You are trying to remove the source. This will remove all the incomes and expenditures linked with this source.",
     "sources" => "Sources",
     "statistics" => "Statystyki",
     "title" => "Title",

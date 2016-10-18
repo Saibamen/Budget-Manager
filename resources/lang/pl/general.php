@@ -26,7 +26,7 @@ return [
     "select_or_leave_blank" => "Wybierz lub pozostaw puste",
     "send" => "Wyślij",
     "source" => "Źródło",
-    "source_delete_warning" => "<strong>Uwaga!</strong> Próbujesz usunąć źródło. Spowoduje to usunięcie wszystkich przychodów i wydatków w budżecie.",
+    "source_delete_warning" => "<strong>Uwaga!</strong> Próbujesz usunąć źródło. Spowoduje to usunięcie wszystkich przychodów i wydatków w budżecie powiązanych z tym źródłem.",
     "sources" => "Źródła",
     "statistics" => "Statystyki",
     "title" => "Tytuł",

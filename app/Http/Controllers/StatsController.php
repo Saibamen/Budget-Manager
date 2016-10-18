@@ -61,6 +61,17 @@ class StatsController extends Controller {
     }
 
     public function index() {
+        // Nie wchodź, jeśli nie ma żadnych przychodów/wydatków w budżecie
+        $count_expenditures = Budget::count("id");
+
+        if($count_expenditures === 0) {
+            return Controller::returnBack([
+                // TODO: lang
+                "message" => trans("general.no_budget_records"),
+                "alert-class" => "alert-info"
+            ]);
+        }
+
         $title = trans("general.statistics");
 
         return view("stats", ["title" => $title]);

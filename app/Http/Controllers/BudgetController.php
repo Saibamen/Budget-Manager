@@ -62,18 +62,22 @@ class BudgetController extends Controller {
             "is_actions_restricted" => $this->isActionsRestricted()
         ];
 
-        /*if($dataset->count() === 0) {
-            return Controller::returnBack([
-                "message" => trans("general.games_not_found"),
-                "alert-class" => "alert-info"
-            ]);
-        }*/
-
         return view("list", $view_data);
     }
 
     public function showAddEditForm($id = NULL) {
         if($id === NULL) {
+            // Nie pozwalaj na dodawanie bez źródeł
+            $count_sources = Source::count("id");
+
+            if($count_sources === 0) {
+                return redirect()->route("source.addform")->with([
+                    // TODO: lang
+                    "message" => trans("general.no_sources_for_budget"),
+                    "alert-class" => "alert-info"
+                ]);
+            }
+
             $dataset = new Budget;
             $title = trans("general.add");
             $submit_route = route($this->getRouteName() . ".postadd");
