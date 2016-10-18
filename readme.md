@@ -88,26 +88,26 @@
 
 - [x] Logowanie do systemu
 - [x] Wylogowanie z systemu
-- [] Resetowanie hasła
+- [ ] Resetowanie hasła
 - [x] CRUD źródeł przychodów i wydatków
-- [] Seeder źródeł przychodów i wydatków
+- [ ] Seeder źródeł przychodów i wydatków
 - [x] CRUD przychodów i wydatków
-- [] Seeder źródeł przychodów i wydatków
+- [ ] Seeder źródeł przychodów i wydatków
 - [x] Uzupełnienie przychodów i wydatków ze źródeł przez AJAXa
-- [] Wykres podsumowujący zsumowane przychody i wydatki względem dni, tygodni lub miesięcy
-- [] Wykres podsumowujący procentowe udziały źródeł przychodów i wydatków
+- [ ] Wykres podsumowujący zsumowane przychody i wydatki względem dni, tygodni lub miesięcy
+- [ ] Wykres podsumowujący procentowe udziały źródeł przychodów i wydatków
 - [x] Wykres podsumowujący wydatki z podziałem na użytkowników
-- [] Wykres podsumowujący oszczędności, czyli różnicę między przychodami i wydatkami w obrębie miesiąca
-- [] Obsługa tłumaczeń
+- [ ] Wykres podsumowujący oszczędności, czyli różnicę między przychodami i wydatkami w obrębie miesiąca
+- [ ] Obsługa tłumaczeń
 
 ## Demo: [budgetmanager.it-maniak.pl](http://budgetmanager.it-maniak.pl/)
 
-Użytkownik Tomek:
-   Login: test@test.pl
+- Użytkownik Tomek:
+   Login: test@test.pl<br />
    Hasło: test
 
-Użytkownik Kasia:
-   Login: user@test.pl
+- Użytkownik Kasia:
+   Login: user@test.pl<br />
    Hasło: test
 
 ## O autorze
