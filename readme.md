@@ -26,6 +26,7 @@
 1. Wypakuj całą zawartość do osobnego folderu w htdocs
 2. Zmień nazwę pliku `.env.example` na `.env` oraz zmień w nim `APP_URL`, połączenie do bazy danych oraz maila
 3. Utwórz poniższe foldery:
+
    ```
    mkdir bootstrap/cache
    mkdir storage
@@ -37,10 +38,12 @@
    mkdir storage/logs
    ```
 4. Wykonaj następujące polecenia:
-  - `composer install --no-interaction`
-  - `php artisan key:generate`
-  - php artisan migrate
-  - php artisan db:seed
+  -```
+  composer install --no-interaction
+  php artisan key:generate
+  php artisan migrate
+  php artisan db:seed
+  ```
 5. Uruchom serwer poleceniem `php artisan serve`
 6. Aplikacja dostępna jest już pod adresem [http://localhost:8000](http://localhost:8000)
 
@@ -51,6 +54,7 @@
 3. W `index.php` z folderu `public` zamień obie ścieżki tak, aby znajdywały główny folder z kroku 2
 4. Zmień nazwę pliku `.env.example` na `.env` oraz zmień w nim `APP_URL`, połączenie do bazy danych oraz maila
 5. Ustaw chmody oraz utwórz poniższe foldery:
+  -```
   - mkdir bootstrap/cache
   - mkdir storage
   - mkdir storage/app
@@ -61,11 +65,14 @@
   - mkdir storage/logs
   - chmod -R 777 bootstrap/cache
   - chmod -R 777 storage
+  -```
 6. Wykonaj następujące polecenia:
+  -```
   - composer install --no-interaction
   - php artisan key:generate
   - php artisan migrate
   - php artisan db:seed
+  ```
 
 ## Funkcje
 
