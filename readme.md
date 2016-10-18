@@ -1,4 +1,4 @@
-# Budget Manager by Adam "Saibamen" Stachowicz
+# Budget Manager
 
 [![Build Status](https://travis-ci.com/Saibamen/Budget-Manager.svg?token=aGxL6XsgiKL8Ss4SGZve&branch=master)](https://travis-ci.com/Saibamen/Budget-Manager)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
@@ -102,11 +102,11 @@
 
 ## Demo: [budgetmanager.it-maniak.pl](http://budgetmanager.it-maniak.pl/)
 
-- Użytkownik Tomek:
+Użytkownik Tomek:<br />
    Login: test@test.pl<br />
    Hasło: test
 
-- Użytkownik Kasia:
+Użytkownik Kasia:<br />
    Login: user@test.pl<br />
    Hasło: test
 

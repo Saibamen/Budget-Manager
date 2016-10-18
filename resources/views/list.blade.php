@@ -32,8 +32,17 @@
                                     @foreach($dataset as $data)
                                         @php
                                             if(isset($data->type_id)) {
-                                                $data->type_id === $Type::INCOME ? ($color_class = "success" AND $type_icon = "<i class='fa fa-arrow-up' aria-hidden='true'></i>") : $color_class = NULL;
-                                                $data->type_id === $Type::EXPENDITURE ? ($color_class = "danger" AND $type_icon = "<i class='fa fa-arrow-down' aria-hidden='true'></i>") : NULL;
+                                                if((int)$data->type_id === $Type::INCOME) {
+                                                    $color_class = "success";
+                                                    $type_icon = "<i class='fa fa-arrow-up' aria-hidden='true'></i>";
+                                                } else {
+                                                    $color_class = NULL;
+                                                }
+
+                                                if((int)$data->type_id === $Type::EXPENDITURE) {
+                                                    $color_class = "danger";
+                                                    $type_icon = "<i class='fa fa-arrow-down' aria-hidden='true'></i>";
+                                                }
                                             }
                                         @endphp
 
@@ -44,7 +53,7 @@
 
                                             {{-- Akcje --}}
                                             <td>
-                                                @if(($is_actions_restricted && $data->user_id === Auth::User()->id) || !$is_actions_restricted)
+                                                @if(($is_actions_restricted && (int)$data->user_id === Auth::User()->id) || !$is_actions_restricted)
                                                     {{ Html::link(route($route_name . ".editform", $data->id), trans("general.edit"), ["class" => "btn btn-sm btn-primary"]) }}
                                                     {{ Form::button(trans("general.delete"), ["class" => "btn btn-sm btn-danger", "data-toggle" => "modal", "data-target" => "#delete-modal", "data-id" => $data->id, "data-name" => $data->name]) }}
                                                 @endif
