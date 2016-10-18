@@ -5,11 +5,12 @@
 
 ## Technologie i biblioteki
 
-- PHP
+- PHP 7
 - MySQL
 - Laravel 5.3
 - JavaScript
 - AJAX
+- JSON
 - Highcharts
 - Travis CI
 - Bootstrap
@@ -17,17 +18,59 @@
 
 ## Wymagania
 
-TODO
+- PHP 7
+- Najnowsza wersja [Composera](https://getcomposer.org/)
 
-## Instalacja
+## Instalacja - localhost
 
-TODO
+1. Wypakuj całą zawartość do osobnego folderu w htdocs
+2. Zmień nazwę pliku `.env.example` na `.env` oraz zmień w nim `APP_URL`, połączenie do bazy danych oraz maila
+3. Utwórz poniższe foldery:
+  ```
+  mkdir bootstrap/cache
+  mkdir storage
+  mkdir storage/app
+  mkdir storage/framework
+  mkdir storage/framework/sessions
+  mkdir storage/framework/cache
+  mkdir storage/framework/views
+  ```
+4. Wykonaj następujące polecenia:
+  - `composer install --no-interaction`
+  - `php artisan key:generate`
+  - php artisan migrate
+  - php artisan db:seed
+5. Uruchom serwer poleceniem `php artisan serve`
+6. Aplikacja dostępna jest już pod adresem [http://localhost:8000](http://localhost:8000)
+
+## Instalacja - własny serwer
+
+1. Wypakuj zawartość folderu `public` na serwer FTP
+2. Resztę folderów dla bezpieczeństwa umieść w osobnym folderze poza `public_html` (lub `htaccess`)
+3. W `index.php` z folderu `public` zamień obie ścieżki tak, aby znajdywały główny folder z kroku 2
+4. Zmień nazwę pliku `.env.example` na `.env` oraz zmień w nim `APP_URL`, połączenie do bazy danych oraz maila
+5. Ustaw chmody oraz utwórz poniższe foldery:
+  - mkdir bootstrap/cache
+  - mkdir storage
+  - mkdir storage/app
+  - mkdir storage/framework
+  - mkdir storage/framework/sessions
+  - mkdir storage/framework/cache
+  - mkdir storage/framework/views
+  - chmod -R 777 bootstrap/cache
+  - chmod -R 777 storage
+6. Wykonaj następujące polecenia:
+  - composer install --no-interaction
+  - php artisan key:generate
+  - php artisan migrate
+  - php artisan db:seed
 
 ## Funkcje
 
-TODO
+- [x] TODO
+- [ ] TODO 2
 
-## TODO: link do strony
+## Demo: [budgetmanager.it-maniak.pl](http://budgetmanager.it-maniak.pl/)
 
 ## O autorze
 
