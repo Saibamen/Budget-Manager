@@ -24,9 +24,8 @@ class StatsController extends Controller {
             ->groupBy("user_id")
             ->get();
 
-        // TODO: lang
         $js_data[0] = [
-            "title" => "Wydatki z podziałem na użytkowników",
+            "title" => trans("general.expenditures_by_users"),
             "div_id" => "#stat",
             "js_chart_data" => ["name" => trans("general.Expenditures"), "data" => []]
         ];
@@ -46,9 +45,8 @@ class StatsController extends Controller {
             ->groupBy("source_id")
             ->get();
 
-        // TODO: lang
         $js_data[1] = [
-            "title" => "Wydatki z podziałem na źródła",
+            "title" => trans("general.expenditures_by_sources"),
             "div_id" => "#stat-2",
             "js_chart_data" => ["name" => trans("general.Expenditures"), "data" => []]
         ];
@@ -66,7 +64,6 @@ class StatsController extends Controller {
 
         if($count_expenditures === 0) {
             return Controller::returnBack([
-                // TODO: lang
                 "message" => trans("general.no_budget_records"),
                 "alert-class" => "alert-info"
             ]);

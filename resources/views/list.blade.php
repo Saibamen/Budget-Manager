@@ -79,6 +79,8 @@
     </div>
 </div>
 
-@include("deletemodal")
+@if($dataset->total() > 0)
+    @include("deletemodal")
+@endif
 
 @endsection

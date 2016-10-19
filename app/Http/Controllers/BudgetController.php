@@ -72,9 +72,8 @@ class BudgetController extends Controller {
 
             if($count_sources === 0) {
                 return redirect()->route("source.addform")->with([
-                    // TODO: lang
                     "message" => trans("general.no_sources_for_budget"),
-                    "alert-class" => "alert-info"
+                    "alert-class" => "alert-danger"
                 ]);
             }
 

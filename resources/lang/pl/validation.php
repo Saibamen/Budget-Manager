@@ -109,12 +109,14 @@ return [
     */
 
     "attributes"           => [
-        "name" => "nazwa",
-        "type_id" => "typ",
-        "source_id" => "źródło",
+        "comment" => "komentarz",
         "date" => "data",
+        "email" => "adres e-mail",
+        "name" => "nazwa",
+        "password" => "hasło",
+        "source_id" => "źródło",
+        "type_id" => "typ",
         "value" => "wartość",
-        "comment" => "komentarz"
     ],
 
 ];

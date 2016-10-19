@@ -89,7 +89,7 @@ Uwaga! Na niektórych hostingach polecenia z kroku 6 mogą nie wykonywać się p
 
 - [x] Logowanie do systemu
 - [x] Wylogowanie z systemu
-- [ ] Resetowanie hasła
+- [x] Resetowanie hasła
 - [x] CRUD źródeł przychodów i wydatków
 - [ ] Seeder źródeł przychodów i wydatków
 - [x] CRUD przychodów i wydatków
@@ -109,7 +109,7 @@ Użytkownik Tomek:<br />
 
 Użytkownik Kasia:<br />
    Login: user@test.pl<br />
-   Hasło: test
+   Hasło: kasia123
 
 ## O autorze
 

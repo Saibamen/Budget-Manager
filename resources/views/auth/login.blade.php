@@ -9,7 +9,7 @@
                 <div class="panel-body">
                     @include("layouts.messages")
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url("/login") }}">
+                    <form class="form-horizontal" method="POST" action="{{ url("/login") }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has("email") ? " has-error" : "" }}">
