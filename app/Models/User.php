@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\ResetPasswordNotification;
 
 /**
  * App\Models\User
@@ -38,6 +39,10 @@ class User extends Authenticatable {
     protected $hidden = [
         "password", "remember_token",
     ];
+
+    public function sendPasswordResetNotification($token) {
+        $this->notify(new ResetPasswordNotification($token));
+    }
 
     public function budgets() {
         return $this->hasMany(Budget::class);
