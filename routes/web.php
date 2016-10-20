@@ -34,3 +34,5 @@ Route::group(["middleware" => "auth"], function () {
     Route::get("stats", ["as" => "stats.index", "uses" => "StatsController@index"]);
     Route::get("stats/json", ["as" => "stats.json", "uses" => "StatsController@getJSONStatsData"]);
 });
+
+Route::get("lang/{language}", ["as" => "lang.set", "uses" => "Controller@changeLanguage"]);

@@ -85,6 +85,14 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-globe" aria-hidden="true"></i> @lang("general.language") <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ route("lang.set", "en") }}">{{ HTML::image("img/en.png", "English") }} English</a></li>
+                            <li><a href="{{ route("lang.set", "pl")}}">{{ HTML::image("img/pl.png", "Polski") }} Polski</a></li>
+                        </ul>
+                    </li>
+
                     <!-- Authentication Links -->
                     @if(Auth::guest())
                         <li><a href="{{ route("login") }}">@lang("auth.login")</a></li>
