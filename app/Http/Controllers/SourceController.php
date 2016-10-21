@@ -6,7 +6,6 @@ use App\Http\Requests\SourceRequest;
 use App\Models\Source;
 use App\Models\Type;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
 
 class SourceController extends Controller {
 

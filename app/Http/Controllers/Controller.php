@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Http\Request;
-use Cookie;
 
 class Controller extends BaseController {
 

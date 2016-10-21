@@ -7,7 +7,6 @@ use Closure;
 use Config;
 use Cookie;
 use Crypt;
-use Illuminate\Support\Facades\Session;
 
 class SetLanguage {
 

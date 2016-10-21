@@ -9,7 +9,6 @@ use App\Models\Type;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
 
 class BudgetController extends Controller {
 
