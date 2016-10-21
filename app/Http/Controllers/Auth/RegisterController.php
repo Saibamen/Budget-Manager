@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
-use Validator;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Redirect;
+use Validator;
 
 class RegisterController extends Controller {
 
@@ -30,7 +31,8 @@ class RegisterController extends Controller {
     protected $redirectTo = "/";
 
     public function __construct() {
-        $this->middleware('guest');
+        //$this->middleware('guest');
+        Redirect::route("login")->send();
     }
 
     /**

@@ -59,8 +59,8 @@
                                 <a class="btn btn-link" href="{{ url("/password/reset") }}">
                                     @lang("auth.forgot")
                                 </a>
-                                <br><br>
-                                @lang("auth.dont_have_account") <a href="{{ url("/register") }}">@lang("auth.sign_up")</a>
+                                {{--<br><br>
+                                @lang("auth.dont_have_account") <a href="{{ url("/register") }}">@lang("auth.sign_up")</a>--}}
                             </div>
                         </div>
                     </form>
