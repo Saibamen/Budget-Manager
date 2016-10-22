@@ -16,6 +16,7 @@ class SourcesTableSeeder extends Seeder {
             ["id" => 6, "name" => "Zysk z reklamy", "type_id" => Type::INCOME, "value" => NULL, "comment" => NULL],
             ["id" => 7, "name" => "Dom", "type_id" => NULL, "value" => NULL, "comment" => NULL],
             ["id" => 8, "name" => "Środki czystości", "type_id" => Type::EXPENDITURE, "value" => NULL, "comment" => NULL],
+            ["id" => 9, "name" => "Wypłata od pracodawcy Vitrosilicon S.A.", "type_id" => Type::INCOME, "value" => 7000, "comment" => NULL],
         ];
 
         foreach($dataset as $data) {

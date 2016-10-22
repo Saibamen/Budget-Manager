@@ -93,7 +93,7 @@ Uwaga! Na niektórych hostingach polecenia z kroku 6 mogą nie wykonywać się p
 - [x] CRUD źródeł przychodów i wydatków
 - [x] Seeder źródeł przychodów i wydatków
 - [x] CRUD przychodów i wydatków
-- [ ] Seeder przychodów i wydatków
+- [x] Seeder przychodów i wydatków
 - [x] Uzupełnienie przychodów i wydatków ze źródeł przez AJAXa
 - [ ] Wykres podsumowujący zsumowane przychody i wydatki względem dni, tygodni lub miesięcy
 - [ ] Wykres podsumowujący procentowe udziały źródeł przychodów i wydatków

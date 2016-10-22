@@ -13,6 +13,9 @@ class DatabaseSeeder extends Seeder {
 
         $this->command->info("Creating sample sources...");
         $this->call(SourcesTableSeeder::class);
+
+        $this->command->info("Creating sample budget items...");
+        $this->call(BudgetsTableSeeder::class);
     }
 
 }
