@@ -15,7 +15,8 @@ $(document).ready(function() {
                 data: chart_JSON_data.data
             });
 
-            if(series_data.data) {
+            // FIXME: Nie rysuj gdy nie ma danych
+            //if(series_data.data) {
                 // Tworzenie charta
                 $(data.div_id).highcharts({
                     chart: {
@@ -25,8 +26,8 @@ $(document).ready(function() {
                         text: data.title
                     },
                     tooltip: {
-                        pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b><br>" +
-                                    "<b>{point.y:.2f}</b> PLN"
+                        pointFormat: "<b>{point.y:.2f}</b> PLN<br>" +
+                                    "<b>{point.percentage:.1f}%</b>"
                     },
                     plotOptions: {
                         pie: {
@@ -45,7 +46,7 @@ $(document).ready(function() {
                     series: series_data,
                     credits: false
                 });
-            }
+            //}
 
             series_data = [];
         });

@@ -39,7 +39,6 @@ class ResetPasswordNotification extends Notification {
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable) {
-        // TODO: reszta HTMLa
         return (new MailMessage)
             ->subject(trans("passwords.mail_subject"))
             ->greeting(trans("general.mail_greeting"))

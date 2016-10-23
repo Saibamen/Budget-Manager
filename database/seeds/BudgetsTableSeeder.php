@@ -65,12 +65,12 @@ class BudgetsTableSeeder extends Seeder {
             /*
              *	Wypłata - AdSense
              */
-            ["id" => 43, "name" => "Google AdSense", "source_id" => 6, "type_id" => Type::INCOME, "value" => 40, "date" => "2016-05-16", "user_id" => 1, "comment" => NULL],
-            ["id" => 44, "name" => "Google AdSense", "source_id" => 6, "type_id" => Type::INCOME, "value" => 42, "date" => "2016-06-16", "user_id" => 1, "comment" => NULL],
-            ["id" => 45, "name" => "Google AdSense", "source_id" => 6, "type_id" => Type::INCOME, "value" => 45, "date" => "2016-07-15", "user_id" => 1, "comment" => NULL],
-            ["id" => 46, "name" => "Google AdSense", "source_id" => 6, "type_id" => Type::INCOME, "value" => 61, "date" => "2016-08-15", "user_id" => 1, "comment" => NULL],
-            ["id" => 47, "name" => "Google AdSense", "source_id" => 6, "type_id" => Type::INCOME, "value" => 80, "date" => "2016-09-16", "user_id" => 1, "comment" => NULL],
-            ["id" => 48, "name" => "Google AdSense", "source_id" => 6, "type_id" => Type::INCOME, "value" => 100, "date" => "2016-10-17", "user_id" => 1, "comment" => NULL],
+            ["id" => 43, "name" => "Google AdSense", "source_id" => 6, "type_id" => Type::INCOME, "value" => 284, "date" => "2016-05-16", "user_id" => 1, "comment" => NULL],
+            ["id" => 44, "name" => "Google AdSense", "source_id" => 6, "type_id" => Type::INCOME, "value" => 304, "date" => "2016-06-16", "user_id" => 1, "comment" => NULL],
+            ["id" => 45, "name" => "Google AdSense", "source_id" => 6, "type_id" => Type::INCOME, "value" => 356, "date" => "2016-07-15", "user_id" => 1, "comment" => NULL],
+            ["id" => 46, "name" => "Google AdSense", "source_id" => 6, "type_id" => Type::INCOME, "value" => 409, "date" => "2016-08-15", "user_id" => 1, "comment" => NULL],
+            ["id" => 47, "name" => "Google AdSense", "source_id" => 6, "type_id" => Type::INCOME, "value" => 512, "date" => "2016-09-16", "user_id" => 1, "comment" => NULL],
+            ["id" => 48, "name" => "Google AdSense", "source_id" => 6, "type_id" => Type::INCOME, "value" => 643, "date" => "2016-10-17", "user_id" => 1, "comment" => NULL],
 
             /*
              *	Kino

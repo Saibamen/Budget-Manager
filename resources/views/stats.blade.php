@@ -16,6 +16,12 @@
                     <div class="col-md-6">
                         <div id="stat-2"></div>
                     </div>
+                    <div class="col-md-6">
+                        <div id="stat-3"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="stat-4"></div>
+                    </div>
                 </div>
             </div>
         </div>

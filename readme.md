@@ -96,10 +96,9 @@ Uwaga! Na niektórych hostingach polecenia z kroku 6 mogą nie wykonywać się p
 - [x] Seeder przychodów i wydatków
 - [x] Uzupełnienie przychodów i wydatków ze źródeł przez AJAXa
 - [ ] Wykres podsumowujący zsumowane przychody i wydatki względem dni, tygodni lub miesięcy
-- [ ] Wykres podsumowujący procentowe udziały źródeł przychodów i wydatków
+- [x] Wykres podsumowujący procentowe udziały źródeł przychodów i wydatków
 - [x] Wykres podsumowujący wydatki z podziałem na użytkowników
-- [ ] Wykres podsumowujący oszczędności, czyli różnicę między przychodami i wydatkami w obrębie miesiąca
-- [x] Wykres podsumowujący wydatki z podziałem na źródła
+- [x] Wykres podsumowujący oszczędności, czyli różnicę między przychodami i wydatkami w obrębie miesiąca (od 1 dnia miesiąca do dzisiejszego dnia)
 - [x] Obsługa tłumaczeń
 
 ## Demo: [budgetmanager.it-maniak.pl](http://budgetmanager.it-maniak.pl/)

@@ -43,6 +43,9 @@
                                                     $color_class = "danger";
                                                     $type_icon = "<i class='fa fa-arrow-down' aria-hidden='true'></i>";
                                                 }
+                                            } else {
+                                                $color_class = NULL;
+                                                $type_icon = NULL;
                                             }
                                         @endphp
 
