@@ -8,7 +8,7 @@ return [
     "budget" => "Budget",
     "comment" => "Comment",
     "date" => "Date",
-    "delete" => "Usuń",
+    "delete" => "Delete",
     "deleted" => "Deleted successfully",
     "edit" => "Edit",
     "Expenditure" => "Expenditure",

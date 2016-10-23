@@ -25,7 +25,7 @@
                                             <th>{{ $column["title"] }}</th>
                                         @endforeach
 
-                                        <th>@lang("general.actions")</th>
+                                        <th style="width:130px;">@lang("general.actions")</th>
                                     </tr>
                                 </thead>
                                 <tbody>
