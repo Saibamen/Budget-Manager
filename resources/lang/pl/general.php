@@ -26,6 +26,7 @@ return [
     "mail_action_trouble_2" => ", skopiuj i wklej poniższy adres URL do przeglądarki:",
     "mail_greeting" => "Witaj!",
     "mail_regards" => "Pozdrowienia",
+    "manage_your_budget" => "Zarządzaj swoim budżetem",
     "name" => "Nazwa",
     "no" => "Nie",
     "no_budget_records" => "Nie ma żadnych przychodów i wydatków w Twoim budżecie.",

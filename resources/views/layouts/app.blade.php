@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ trans()->locale() }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@if(isset($title)){{ $title }} |@endif Budget Manager - Zarządzaj swoim budżetem</title>
+    <title>@if(isset($title)){{ $title }} |@endif Budget Manager - @lang("general.manage_your_budget")</title>
 
     <!-- Fonts -->
     {!! Html::style("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css") !!}
