@@ -89,7 +89,6 @@ class BudgetController extends Controller {
                 ]);
             }
 
-            // TODO: Do funkcji... ale nie działa return
             if((int)$dataset->user_id !== Auth::user()->id) {
                 return Controller::returnBack([
                     "message" => trans("general.you_cant_operate"),
@@ -127,7 +126,6 @@ class BudgetController extends Controller {
                 ]);
             }
 
-            // TODO: Do funkcji... ale nie działa return
             if((int)$object->user_id !== Auth::user()->id) {
                 return Controller::returnBack([
                     "message" => trans("general.you_cant_operate"),

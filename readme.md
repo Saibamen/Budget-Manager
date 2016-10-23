@@ -98,7 +98,7 @@ Uwaga! Na niektórych hostingach polecenia z kroku 6 mogą nie wykonywać się p
 - [ ] Wykres podsumowujący zsumowane przychody i wydatki względem dni, tygodni lub miesięcy
 - [x] Wykres podsumowujący procentowe udziały źródeł przychodów i wydatków
 - [x] Wykres podsumowujący wydatki z podziałem na użytkowników
-- [x] Wykres podsumowujący oszczędności, czyli różnicę między przychodami i wydatkami w obrębie miesiąca (od 1 dnia miesiąca do dzisiejszego dnia)
+- [x] Wykres podsumowujący oszczędności, czyli różnicę między przychodami i wydatkami w obrębie miesiąca
 - [x] Obsługa tłumaczeń
 
 ## Demo: [budgetmanager.it-maniak.pl](http://budgetmanager.it-maniak.pl/)

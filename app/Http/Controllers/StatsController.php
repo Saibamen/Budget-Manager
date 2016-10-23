@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Budget;
 use App\Models\Type;
+use Carbon\Carbon;
 
 class StatsController extends Controller {
 
     public function getJSONStatsData() {
-        // TODO: czy "js_chart_data"["name"] potrzebne?
         /*
          *   Wykres 1 - Wydatki z podziałem na użytkowników
          */
@@ -23,11 +23,11 @@ class StatsController extends Controller {
         $js_data[0] = [
             "title" => trans("general.expenditures_by_users"),
             "div_id" => "#stat",
-            "js_chart_data" => ["name" => trans("general.Expenditures"), "data" => []]
+            "js_chart_data" => []
         ];
 
         foreach($data as $record) {
-            $js_data[0]["js_chart_data"]["data"] += array_merge($js_data[0]["js_chart_data"]["data"], [[$record->user->name, (float)$record->sum]]);
+            $js_data[0]["js_chart_data"] += array_merge($js_data[0]["js_chart_data"], [[$record->user->name, (float)$record->sum]]);
         }
 
         /*
@@ -44,11 +44,11 @@ class StatsController extends Controller {
         $js_data[1] = [
             "title" => trans("general.expenditures_by_sources"),
             "div_id" => "#stat-2",
-            "js_chart_data" => ["name" => trans("general.Expenditures"), "data" => []]
+            "js_chart_data" => []
         ];
 
         foreach($data2 as $record) {
-            $js_data[1]["js_chart_data"]["data"] += array_merge($js_data[1]["js_chart_data"]["data"], [[$record->source->name, (float)$record->sum]]);
+            $js_data[1]["js_chart_data"] += array_merge($js_data[1]["js_chart_data"], [[$record->source->name, (float)$record->sum]]);
         }
 
         /*
@@ -58,19 +58,19 @@ class StatsController extends Controller {
             ->with(["type" => function($query) {
                 $query->select("id", "name");
             }])
+            ->where("date", ">=", Carbon::now()->startOfMonth())
             ->groupBy("type_id")
-            // TODO: od pierwszego dnia aktualnego miesiąca
             ->get();
 
         $js_data[2] = [
             "title" => trans("general.savings_current_month"),
             "div_id" => "#stat-3",
-            "js_chart_data" => ["name" => trans("general.Expenditures"), "data" => []]
+            "js_chart_data" => []
         ];
 
-        $js_data[2]["js_chart_data"]["data"] += array_merge($js_data[2]["js_chart_data"]["data"], [[trans("general.savings"), (float)($data3[0]->sum - $data3[1]->sum)]]);
+        $js_data[2]["js_chart_data"] += array_merge($js_data[2]["js_chart_data"], [[trans("general.savings"), (float)($data3[0]->sum - $data3[1]->sum)]]);
 
-        $js_data[2]["js_chart_data"]["data"] += array_merge($js_data[2]["js_chart_data"]["data"], [[trans("general.Expenditures"), (float)$data3[1]->sum]]);
+        $js_data[2]["js_chart_data"] += array_merge($js_data[2]["js_chart_data"], [[trans("general.Expenditures"), (float)$data3[1]->sum]]);
 
         /*
          *   Wykres 4 - Przychody z podziałem na źródła
@@ -86,11 +86,11 @@ class StatsController extends Controller {
         $js_data[3] = [
             "title" => trans("general.incomes_by_sources"),
             "div_id" => "#stat-4",
-            "js_chart_data" => ["name" => trans("general.Incomes"), "data" => []]
+            "js_chart_data" => []
         ];
 
         foreach($data4 as $record) {
-            $js_data[3]["js_chart_data"]["data"] += array_merge($js_data[3]["js_chart_data"]["data"], [[$record->source->name, (float)$record->sum]]);
+            $js_data[3]["js_chart_data"] += array_merge($js_data[3]["js_chart_data"], [[$record->source->name, (float)$record->sum]]);
         }
 
         return response()->json($js_data);
