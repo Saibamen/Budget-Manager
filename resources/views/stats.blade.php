@@ -32,5 +32,9 @@
 
 @section("js")
     {!! Html::script("https://code.highcharts.com/highcharts.js") !!}
+    {!! Html::script("http://code.highcharts.com/modules/no-data-to-display.js") !!}
+    <script type="text/javascript">
+        Highcharts.setOptions({lang: { noData: "{{ $no_data_message }}" }});
+    </script>
     {!! Html::script("js/stats.js") !!}
 @endsection

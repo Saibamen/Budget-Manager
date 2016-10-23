@@ -96,7 +96,7 @@ Uwaga! Na niektórych hostingach polecenia z kroku 6 mogą nie wykonywać się p
 - [x] Seeder przychodów i wydatków
 - [x] Uzupełnienie przychodów i wydatków ze źródeł przez AJAXa
 - [ ] Wykres podsumowujący zsumowane przychody i wydatki względem dni, tygodni lub miesięcy
-- [x] Wykres podsumowujący procentowe udziały źródeł przychodów i wydatków
+- [x] Wykresy podsumowujące procentowe udziały źródeł przychodów i wydatków
 - [x] Wykres podsumowujący wydatki z podziałem na użytkowników
 - [x] Wykres podsumowujący oszczędności, czyli różnicę między przychodami i wydatkami w obrębie miesiąca
 - [x] Obsługa tłumaczeń

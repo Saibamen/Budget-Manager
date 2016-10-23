@@ -68,9 +68,11 @@ class StatsController extends Controller {
             "js_chart_data" => []
         ];
 
-        $js_data[2]["js_chart_data"] += array_merge($js_data[2]["js_chart_data"], [[trans("general.savings"), (float)($data3[0]->sum - $data3[1]->sum)]]);
+        if(isset($data3[0]) && isset($data3[1])) {
+            $js_data[2]["js_chart_data"] += array_merge($js_data[2]["js_chart_data"], [[trans("general.savings"), (float)($data3[0]->sum - $data3[1]->sum)]]);
 
-        $js_data[2]["js_chart_data"] += array_merge($js_data[2]["js_chart_data"], [[trans("general.Expenditures"), (float)$data3[1]->sum]]);
+            $js_data[2]["js_chart_data"] += array_merge($js_data[2]["js_chart_data"], [[trans("general.Expenditures"), (float)$data3[1]->sum]]);
+        }
 
         /*
          *   Wykres 4 - Przychody z podziałem na źródła
@@ -109,6 +111,8 @@ class StatsController extends Controller {
 
         $title = trans("general.statistics");
 
-        return view("stats", ["title" => $title]);
+        $no_data_message = trans("general.stats_no_data");
+
+        return view("stats", ["title" => $title, "no_data_message" => $no_data_message]);
     }
 }

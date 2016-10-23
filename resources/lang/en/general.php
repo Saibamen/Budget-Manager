@@ -42,6 +42,7 @@ return [
     "source_delete_warning" => "<b>Warning!</b> You are trying to remove the source. This will remove all the incomes and expenditures linked with this source.",
     "sources" => "Sources",
     "statistics" => "Statistics",
+    "stats_no_data" => "No data to display",
     "title" => "Title",
     "type" => "Type",
     "untyped" => "Untyped",
