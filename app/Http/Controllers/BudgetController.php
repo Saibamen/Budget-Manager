@@ -261,7 +261,6 @@ class BudgetController extends Controller {
 
                 return date("j.m.Y", strtotime(Carbon::now()));
             },
-            "type" => "date",
             "optional" => [
                 "required" => "required"
             ]
