@@ -14,7 +14,7 @@ class SourceRequest extends FormRequest {
         return [
             "name" => "required|min:2|unique:sources,name," . $this->id,
             "type_id" => "exists:types,id",
-            "value" => "numeric"
+            "value" => "numeric|min:0.01"
         ];
     }
 

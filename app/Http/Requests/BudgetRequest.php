@@ -16,7 +16,7 @@ class BudgetRequest extends FormRequest {
             "name" => "required|min:2",
             "source_id" => "required|exists:sources,id",
             "type_id" => "required|exists:types,id",
-            "value" => "required|numeric",
+            "value" => "required|numeric|min:0.01",
             "date" => "required|date"
         ];
     }
