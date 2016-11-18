@@ -72,6 +72,8 @@ class StatsController extends Controller {
             $js_data[2]["js_chart_data"] += array_merge($js_data[2]["js_chart_data"], [[trans("general.savings"), (float)($data3[0]->sum - $data3[1]->sum)]]);
 
             $js_data[2]["js_chart_data"] += array_merge($js_data[2]["js_chart_data"], [[trans("general.Expenditures"), (float)$data3[1]->sum]]);
+        } elseif(isset($data3[0])) {
+            $js_data[2]["js_chart_data"] += array_merge($js_data[2]["js_chart_data"], [[trans("general.savings"), (float)$data3[0]->sum]]);
         }
 
         /*
