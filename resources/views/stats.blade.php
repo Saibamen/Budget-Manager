@@ -33,6 +33,8 @@
 @section("js")
     {!! Html::script("https://code.highcharts.com/highcharts.js") !!}
     {!! Html::script("http://code.highcharts.com/modules/no-data-to-display.js") !!}
+    {{-- TODO: langi  --}}
+    {!! Html::script("http://code.highcharts.com/modules/exporting.js") !!}
     <script type="text/javascript">
         Highcharts.setOptions({lang: { noData: "{{ $no_data_message }}" }});
     </script>
