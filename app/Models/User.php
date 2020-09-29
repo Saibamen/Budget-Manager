@@ -2,23 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\ResetPasswordNotification;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 /**
- * App\Models\User
+ * App\Models\User.
  *
- * @property integer $id
- * @property string $name
- * @property string $email
- * @property string $password
- * @property string $remember_token
+ * @property int            $id
+ * @property string         $name
+ * @property string         $email
+ * @property string         $password
+ * @property string         $remember_token
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Budget[] $budgets
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $unreadNotifications
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereName($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereEmail($value)
@@ -28,24 +29,25 @@ use App\Notifications\ResetPasswordNotification;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class User extends Authenticatable {
-
+class User extends Authenticatable
+{
     use Notifiable;
 
     protected $fillable = [
-        "name", "email", "password",
+        'name', 'email', 'password',
     ];
 
     protected $hidden = [
-        "password", "remember_token",
+        'password', 'remember_token',
     ];
 
-    public function sendPasswordResetNotification($token) {
+    public function sendPasswordResetNotification($token)
+    {
         $this->notify(new ResetPasswordNotification($token));
     }
 
-    public function budgets() {
+    public function budgets()
+    {
         return $this->hasMany(Budget::class);
     }
-
 }

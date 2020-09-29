@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_USERNAME', 'hello@example.com'),
-        'name' => 'Budget Manager',
+        'name'    => 'Budget Manager',
     ],
 
     /*
