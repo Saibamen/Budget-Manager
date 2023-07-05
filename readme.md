@@ -44,6 +44,7 @@
    mkdir storage/framework/views
    mkdir storage/logs
    ```
+   
 4. Wykonaj następujące polecenia:
 
   ```
@@ -52,6 +53,7 @@
   php artisan migrate
   php artisan db:seed
   ```
+
 5. Uruchom serwer poleceniem `php artisan serve`
 6. Aplikacja dostępna jest już pod adresem [http://localhost:8000](http://localhost:8000)
 
@@ -75,6 +77,7 @@
   chmod -R 777 bootstrap/cache
   chmod -R 777 storage
   ```
+
 6. Wykonaj następujące polecenia:
 
   ```
@@ -83,6 +86,7 @@
   php artisan migrate
   php artisan db:seed
   ```
+  
 Uwaga! Na niektórych hostingach polecenia z kroku 6 mogą nie wykonywać się poprawnie! Należy wtedy skorzystać z pomocy hostingodawcy.
 
 ## Funkcje
@@ -100,22 +104,3 @@ Uwaga! Na niektórych hostingach polecenia z kroku 6 mogą nie wykonywać się p
 - [x] Wykres podsumowujący wydatki z podziałem na użytkowników
 - [x] Wykres podsumowujący oszczędności, czyli różnicę między przychodami i wydatkami w obrębie miesiąca
 - [x] Obsługa tłumaczeń
-
-## Demo: [budgetmanager.it-maniak.pl](http://budgetmanager.it-maniak.pl/)
-
-Użytkownik Tomek:<br />
-   Login: test@test.pl<br />
-   Hasło: test
-
-Użytkownik Kasia:<br />
-   Login: user@test.pl<br />
-   Hasło: kasia123
-
-## O autorze
-
-Adam "Saibamen" Stachowicz<br />
-Państwowa Wyższa Szkoła Zawodowa im. Witelona w Legnicy<br />
-III rok Informatyki spec. Systemy i Sieci Komputerowe
-
-Programista od 14 roku życia, głównie webdev (PHP).<br />
-W wolnych chwilach rowerzysta, DJ oraz fotograf.
