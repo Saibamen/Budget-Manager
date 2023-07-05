@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Source whereComment($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Source whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Source whereUpdatedAt($value)
+ *
  * @mixin \Eloquent
  */
 class Source extends Model

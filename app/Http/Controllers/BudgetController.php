@@ -218,69 +218,69 @@ class BudgetController extends Controller
                 'optional' => [
                     'required' => 'required',
                 ],
-        ],
-        [
-            'id'    => 'source_id',
-            'title' => trans('general.source'),
-            'value' => function ($data) {
-                return $data->source_id;
-            },
-            'selectable' => Source::pluck('name', 'id'),
-            'type'       => 'select',
-            'optional'   => [
-                'required'    => 'required',
-                'data-url'    => url('/').'/source/json/',
-                'placeholder' => trans('general.select'),
             ],
-        ],
-        [
-            'id'    => 'type_id',
-            'title' => trans('general.type'),
-            'value' => function ($data) {
-                return $data->type_id;
-            },
-            'selectable' => Type::pluck('name', 'id'),
-            'type'       => 'select',
-            'optional'   => [
-                'required'    => 'required',
-                'placeholder' => trans('general.select'),
+            [
+                'id'    => 'source_id',
+                'title' => trans('general.source'),
+                'value' => function ($data) {
+                    return $data->source_id;
+                },
+                'selectable' => Source::pluck('name', 'id'),
+                'type'       => 'select',
+                'optional'   => [
+                    'required'    => 'required',
+                    'data-url'    => url('/').'/source/json/',
+                    'placeholder' => trans('general.select'),
+                ],
             ],
-        ],
-        [
-            'id'    => 'value',
-            'title' => trans('general.value'),
-            'value' => function ($data) {
-                return $data->value;
-            },
-            'type'     => 'number',
-            'optional' => [
-                'step'        => '0.01',
-                'placeholder' => '0.00',
-                'required'    => 'required',
+            [
+                'id'    => 'type_id',
+                'title' => trans('general.type'),
+                'value' => function ($data) {
+                    return $data->type_id;
+                },
+                'selectable' => Type::pluck('name', 'id'),
+                'type'       => 'select',
+                'optional'   => [
+                    'required'    => 'required',
+                    'placeholder' => trans('general.select'),
+                ],
             ],
-        ],
-        [
-            'id'    => 'date',
-            'title' => trans('general.date'),
-            'value' => function ($data) {
-                if ($data->date) {
-                    return date('j.m.Y', strtotime($data->date));
-                }
+            [
+                'id'    => 'value',
+                'title' => trans('general.value'),
+                'value' => function ($data) {
+                    return $data->value;
+                },
+                'type'     => 'number',
+                'optional' => [
+                    'step'        => '0.01',
+                    'placeholder' => '0.00',
+                    'required'    => 'required',
+                ],
+            ],
+            [
+                'id'    => 'date',
+                'title' => trans('general.date'),
+                'value' => function ($data) {
+                    if ($data->date) {
+                        return date('j.m.Y', strtotime($data->date));
+                    }
 
-                return date('j.m.Y', strtotime(Carbon::now()));
-            },
-            'optional' => [
-                'required' => 'required',
+                    return date('j.m.Y', strtotime(Carbon::now()));
+                },
+                'optional' => [
+                    'required' => 'required',
+                ],
             ],
-        ],
-        [
-            'id'    => 'comment',
-            'title' => trans('general.comment'),
-            'value' => function ($data) {
-                return $data->comment;
-            },
-            'type' => 'textarea',
-        ],
+            [
+                'id'    => 'comment',
+                'title' => trans('general.comment'),
+                'value' => function ($data) {
+                    return $data->comment;
+                },
+                'type' => 'textarea',
+            ],
         ];
     }
 }

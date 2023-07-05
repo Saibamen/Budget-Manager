@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Type whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Type whereName($value)
+ *
  * @mixin \Eloquent
  */
 class Type extends Model

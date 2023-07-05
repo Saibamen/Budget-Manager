@@ -201,39 +201,39 @@ class SourceController extends Controller
                 'optional' => [
                     'required' => 'required',
                 ],
-        ],
-        [
-            'id'    => 'type_id',
-            'title' => trans('general.type'),
-            'value' => function ($data) {
-                return $data->type_id;
-            },
-            'selectable' => Type::pluck('name', 'id'),
-            'type'       => 'select',
-            'optional'   => [
-                'placeholder' => trans('general.select_or_leave_blank'),
             ],
-        ],
-        [
-            'id'    => 'value',
-            'title' => trans('general.value'),
-            'value' => function ($data) {
-                return $data->value;
-            },
-            'type'     => 'number',
-            'optional' => [
-                'step'        => '0.01',
-                'placeholder' => '0.00',
+            [
+                'id'    => 'type_id',
+                'title' => trans('general.type'),
+                'value' => function ($data) {
+                    return $data->type_id;
+                },
+                'selectable' => Type::pluck('name', 'id'),
+                'type'       => 'select',
+                'optional'   => [
+                    'placeholder' => trans('general.select_or_leave_blank'),
+                ],
             ],
-        ],
-        [
-            'id'    => 'comment',
-            'title' => trans('general.comment'),
-            'value' => function ($data) {
-                return $data->comment;
-            },
-            'type' => 'textarea',
-        ],
+            [
+                'id'    => 'value',
+                'title' => trans('general.value'),
+                'value' => function ($data) {
+                    return $data->value;
+                },
+                'type'     => 'number',
+                'optional' => [
+                    'step'        => '0.01',
+                    'placeholder' => '0.00',
+                ],
+            ],
+            [
+                'id'    => 'comment',
+                'title' => trans('general.comment'),
+                'value' => function ($data) {
+                    return $data->comment;
+                },
+                'type' => 'textarea',
+            ],
         ];
     }
 }

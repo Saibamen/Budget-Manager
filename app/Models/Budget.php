@@ -31,6 +31,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Budget whereComment($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Budget whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Budget whereUpdatedAt($value)
+ *
  * @mixin \Eloquent
  */
 class Budget extends Model
